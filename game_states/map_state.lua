@@ -9,6 +9,13 @@ require 'actors/player'
 
 MapState = class("MapState", State)
 function MapState:initialize()
+self.level = Level(1, math.floor(math.random() * 100))
+  self.view = MapView(self.level.map)
+  game.renderer.map_view = self.view
+  self.score_view = ScoreView()
+  self.score_view.player = self.level.player
+  self.view:update()
+  love.graphics.setFont(game.fonts.small)
 end
 
 function MapState:draw()
