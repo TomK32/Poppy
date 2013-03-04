@@ -24,6 +24,7 @@ function MapState:draw()
   self.score_view:draw()
 
   love.graphics.print("FPS: "..love.timer.getFPS(), 10, 20)
+  love.graphics.print("x: " .. self.level.player.position.x .. ', y: ' .. self.level.player.position.y, 10, 35)
 end
 
 function MapState:update(dt)

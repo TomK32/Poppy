@@ -33,8 +33,8 @@ function MapGenerator:seedPosition(seed_x,seed_y, scale_x, scale_y, offset_x, of
   offset_x = offset_x or 0
   offset_y = offset_y or 0
   return {
-    x = math.floor((((SimplexNoise.Noise2D(seed_x*0.1, seed_x*0.1)) * self.map.width) % math.floor(scale_x * self.map.width-1)) + offset_x) + 1,
-    y = math.floor((((SimplexNoise.Noise2D(seed_y*0.1, seed_y*0.1)) * self.map.height) % math.floor(scale_y * self.map.height-1)) + offset_y) + 1
+    x = math.floor((SimplexNoise.Noise2D(seed_x*0.1, seed_x*0.1)) * self.map.width),
+    y = math.floor((SimplexNoise.Noise2D(seed_y*0.1, seed_y*0.1)) * self.map.height)
   }
 end
 

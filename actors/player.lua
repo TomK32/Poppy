@@ -19,8 +19,8 @@ Player.input_alternatives = {
   }
 }
 Player.movements = {
-  up    = { x = 0, y = - 1 },
-  down  = { x = 0, y =   1 },
+  up    = { x = 0, y =   1 },
+  down  = { x = 0, y = - 1 },
   left  = { x = - 1, y = 0 },
   right = { x =   1, y = 0 },
 }
@@ -35,7 +35,8 @@ function Player:initialize(position)
 end
 
 function Player:draw()
-  game.renderer:print('@', {0,0,0,255}, 0, 0)
+  game.renderer:translate(self.position.x, self.position.y)
+  game.renderer:print('@', {255,0,0,255}, 0, 0)
 end
 
 function Player:setInputs(inputs)
@@ -50,7 +51,6 @@ end
 
 function Player:update(dt)
   self.moved = false
-
   Actor.update(self, dt)
 
   if not self.moved then
