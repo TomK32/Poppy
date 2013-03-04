@@ -18,7 +18,9 @@ end
 
 -- fill a whole map
 function MapGenerator:randomize()
-  self.level.player = self:newActor(Player, 21) -- place on the beach
+  self.level.player = self:newActor(Player(), 21)
+  self:newActor(Follower(self.level.player, 'Tina'), 21)
+  self:newActor(Follower(self.level.player, 'Chris'), 21)
 end
 
 function MapGenerator:update(dt)
@@ -40,8 +42,8 @@ end
 
 -- klass: Player, Actor etc
 -- x1, y1, x2, y2 to limit the area where to spawn
-function MapGenerator:newActor(klass, z, x1, y1, x2, y2)
-  local actor = klass()
+function MapGenerator:newActor(actor, z, x1, y1, x2, y2)
+  self:incrementSeed(2)
   actor.position.x = math.floor(self.map.width / 2)
   actor.position.y = 2
   actor.position.z = z or 1

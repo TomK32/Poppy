@@ -6,6 +6,7 @@ require 'views/map_view'
 
 require 'actors/actor'
 require 'actors/player'
+require 'actors/follower'
 
 MapState = class("MapState", State)
 function MapState:initialize()
