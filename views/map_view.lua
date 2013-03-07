@@ -4,7 +4,7 @@ MapView = class("MapView", View)
 MapView:include({
   map = nil,
   top_left = { x = 0, y = 0 }, -- offset
-  scale = { x = 16, y = 16 },
+  scale = { x = 64, y = 64 },
   canvas = nil,
 })
 
