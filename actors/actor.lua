@@ -13,6 +13,13 @@ function Actor:tick()
   self.moved = true
 end
 
+function Actor:draw()
+  love.graphics.push()
+  love.graphics.setColor(255,255,255,255)
+  game.renderer:translate(self.position.x, self.position.y)
+  self:drawContent()
+  love.graphics.pop()
+end
 
 function Actor:update(dt)
   if not self.moved then

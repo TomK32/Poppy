@@ -34,8 +34,7 @@ function Player:initialize(position)
   self:setInputs(Player.input_alternatives['wasd'])
 end
 
-function Player:draw()
-  game.renderer:translate(self.position.x, self.position.y)
+function Player:drawContent()
   game.renderer:print('@', {255,0,0,255}, 0, 0)
 end
 

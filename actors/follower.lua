@@ -22,10 +22,8 @@ function Follower:update(dt)
   end
 end
 
-function Follower:draw()
-  if self:image() then
-    love.graphics.setColor(255,255,255,255)
-    game.renderer:translate(self.position.x, self.position.y)
+function Follower:drawContent()
+  if self:animation() then
     self:animation():draw(self:image(), 0, 0)
   else
     game.renderer:translate(self.position.x, self.position.y)
