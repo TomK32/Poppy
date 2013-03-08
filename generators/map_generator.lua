@@ -18,7 +18,7 @@ end
 
 -- fill a whole map
 function MapGenerator:randomize()
-  self.level.player = self:newActor(Player(), 21)
+  self.level.player = self:newActor(Player({}, game.animations.poppy), 21)
   local pos = self.level.player.position
   self:newActor(Follower(self.level.player, 'Tina', game.animations.tina), 21, pos.x - 2)
   self:newActor(Follower(self.level.player, 'Chris', game.animations.chris), 21, pos.x + 2)

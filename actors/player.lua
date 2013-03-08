@@ -25,17 +25,14 @@ Player.movements = {
   right = { x =   1, y = 0 },
 }
 
-function Player:initialize(position)
+function Player:initialize(position, animation)
   Actor.initialize(self)
   self.position = position or {x = 1, y = 1}
   self.dt_since_input = 0
   self.entity_type = 'Actor'
   self.inputs = {}
   self:setInputs(Player.input_alternatives['wasd'])
-end
-
-function Player:drawContent()
-  game.renderer:print('@', {255,0,0,255}, 0, 0)
+  self.animation_data = animation
 end
 
 function Player:setInputs(inputs)
@@ -51,7 +48,9 @@ end
 function Player:update(dt)
   self.moved = false
   self:keydown(dt)
-
+  if self:animation() then
+    self:animation():update(dt)
+  end
   if not self.moved then
     return false
   end

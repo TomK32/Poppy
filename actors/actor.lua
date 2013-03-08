@@ -3,7 +3,9 @@ Actor = class("Actor")
 function Actor:initialize()
   self.dt_between_step = 1
   self.position = { x = 0, y = 0}
+  self.state = 'standing'
 end
+
 function Actor:move(offset)
   self.position.x = self.position.x + offset.x
   self.position.y = self.position.y + offset.y
@@ -21,6 +23,15 @@ function Actor:draw()
   love.graphics.pop()
 end
 
+function Actor:drawContent()
+  if self:animation() then
+    self:animation():draw(self:image(), 0, 0)
+  else
+    game.renderer:translate(self.position.x, self.position.y)
+    game.renderer:print('@', {0,255,0,255}, 0, 0)
+  end
+end
+
 function Actor:update(dt)
   if not self.moved then
     return false
@@ -32,4 +43,17 @@ end
 
 function Actor:distanceTo(position)
   return math.sqrt(math.abs(self.position.x - position.x) ^ 2 + math.abs(self.position.y - position.y) ^ 2)
+end
+function Actor:animation()
+  if not self.animation_data or not self.animation_data[self.state] then
+    return false
+  end
+  return self.animation_data[self.state].animation
+end
+
+function Actor:image()
+  if not self.animation_data or not self.animation_data[self.state] then
+    return false
+  end
+  return self.animation_data[self.state].image
 end
