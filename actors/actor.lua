@@ -3,6 +3,7 @@ Actor = class("Actor")
 function Actor:initialize()
   self.dt_between_step = 1
   self.position = { x = 0, y = 0}
+  self.passable = false
   self.state = 'standing'
 end
 
@@ -38,12 +39,18 @@ function Actor:update(dt)
   end
 
   self.map:fitIntoMap(self.position)
-
 end
 
 function Actor:distanceTo(position)
   return math.sqrt(math.abs(self.position.x - position.x) ^ 2 + math.abs(self.position.y - position.y) ^ 2)
 end
+
+function Actor:nodeToDirection(node)
+  return {
+    x = node.location.x - self.position.x,
+    y = node.location.y - self.position.y }
+end
+
 function Actor:animation()
   if not self.animation_data or not self.animation_data[self.state] then
     return false

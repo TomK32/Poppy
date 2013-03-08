@@ -4,6 +4,8 @@ require 'map'
 require 'generators/map_generator'
 require 'views/map_view'
 
+require 'lib/astar'
+
 require 'actors/actor'
 require 'actors/player'
 require 'actors/follower'

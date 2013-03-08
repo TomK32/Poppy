@@ -45,9 +45,11 @@ end
 function Map:belowPosition(position)
   -- only search layers under the position.z
   local result = {}
-  for i=1, position.z do
-    if self.layers[position.z - i + 1] then
-      for e, entity in ipairs(self.layers[position.z - i + 1]) do
+  local layer = position.z
+  if not layer then layer = self.layer_indexes[#self.layer_indexes] end
+  for i=1, layer do
+    if self.layers[layer - i + 1] then
+      for e, entity in ipairs(self.layers[layer - i + 1]) do
         if entity.includesPoint and entity:includesPoint(position) then
           table.insert(result, entity)
         end
@@ -67,3 +69,69 @@ function Map:entitiesOfType(position, _type)
   return result
 end
 
+-- compability for AStar
+function Map:getNode(position)
+  entities = self:belowPosition(position)
+  if #entities > 0 then
+  print(#entities)
+    for i, entity in self:belowPosition(position) do
+      if entity.passable == false then
+        return false
+      end
+    end
+  end
+  return Node(position, 1, position)
+end
+
+
+function Map:locationsAreEqual(a,b)
+  return a.x == b.x and a.y == b.y
+end
+function Map:getAdjacentNodes(curnode, dest)
+  local result = {}
+  local cl = curnode.location
+  local dl = dest
+
+  local n = false
+
+  n = self:_handleNode(cl.x + 1, cl.y, curnode, dl.x, dl.y)
+  if n then
+    table.insert(result, n)
+  end
+
+  n = self:_handleNode(cl.x - 1, cl.y, curnode, dl.x, dl.y)
+  if n then
+    table.insert(result, n)
+  end
+
+  n = self:_handleNode(cl.x, cl.y + 1, curnode, dl.x, dl.y)
+  if n then
+    table.insert(result, n)
+  end
+
+  n = self:_handleNode(cl.x, cl.y - 1, curnode, dl.x, dl.y)
+  if n then
+    table.insert(result, n)
+  end
+
+  return result
+end
+
+function Map:_handleNode(x, y, fromnode, destx, desty)
+  -- Fetch a Node for the given location and set its parameters
+  local n = self:getNode({x = x, y = y})
+
+  if n ~= nil then
+    local dx = math.max(x, destx) - math.min(x, destx)
+    local dy = math.max(y, desty) - math.min(y, desty)
+    local emCost = dx + dy
+
+    n.mCost = n.mCost + fromnode.mCost
+    n.score = n.mCost + emCost
+    n.parent = fromnode
+
+    return n
+  end
+
+  return nil
+end

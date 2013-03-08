@@ -13,6 +13,8 @@ function Level:initialize(level, seed)
     math.floor((game.graphics.mode.height - 40) / MapView.scale.y),
     self.generator, self)
 
+  self.astar = AStar(self.map)
+
 end
 
 function Level:update(dt)
