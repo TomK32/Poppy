@@ -2,7 +2,7 @@
 game = {
   title = 'Poppy (working title)',
   graphics = {
-    fullscreen = false,
+    fullscreen = true,
     mode = { height = love.graphics.getHeight(), width = love.graphics.getWidth() }
   },
   fonts = {},
