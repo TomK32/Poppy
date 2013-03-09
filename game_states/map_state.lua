@@ -33,9 +33,6 @@ end
 function MapState:update(dt)
   dt = 0.05
   self.level.player:update(dt)
-  if game.realtime or game.ticked then
-    self.level:update(dt)
-    self.view:update()
-    game.ticked = false
-  end
+  self.level:update(dt)
+  self.view:update()
 end
