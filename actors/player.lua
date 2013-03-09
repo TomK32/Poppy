@@ -32,6 +32,7 @@ function Player:initialize(position, animation)
   self.entity_type = 'Actor'
   self.inputs = {}
   self:setInputs(Player.input_alternatives['wasd'])
+  self:setInputs(Player.input_alternatives['arrows'])
   self.animation_data = animation
   self.passable = true
 end
