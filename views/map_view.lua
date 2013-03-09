@@ -37,7 +37,7 @@ end
 
 function MapView:update()
   love.graphics.setCanvas(self.canvas)
-  love.graphics.setColor(5,55,0,255)
+  love.graphics.setColor(105,205,0,255)
   love.graphics.rectangle('fill', 0,0,self.display.width, self.display.height)
   love.graphics.translate(0, self.display.height)
   for i, layer in ipairs(self.map.layer_indexes) do
