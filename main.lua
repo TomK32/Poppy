@@ -13,7 +13,10 @@ require 'game_states/map_state'
 require 'game_states/finish_screen'
 
 function love.load()
-  game:createFonts(0)
+  local modes = love.graphics.getModes()
+  table.sort(modes, function(a, b) return a.width*a.height > b.width*b.height end)
+  game:setMode(modes[1])
+
   game:startMenu()
   --love.audio.play(game.sounds.music[1])
   love.graphics.setMode(love.graphics.getWidth(), love.graphics.getHeight(), game.graphics.fullscreen)
