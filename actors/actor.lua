@@ -64,3 +64,7 @@ function Actor:image()
   end
   return self.animation_data[self.state].image
 end
+
+function Actor:includesPoint(other_position)
+  return self.position.x == other_position.x and self.position.y == other_position.y
+end

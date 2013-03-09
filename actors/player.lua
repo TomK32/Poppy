@@ -33,6 +33,7 @@ function Player:initialize(position, animation)
   self.inputs = {}
   self:setInputs(Player.input_alternatives['wasd'])
   self.animation_data = animation
+  self.passable = true
 end
 
 function Player:setInputs(inputs)

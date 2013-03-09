@@ -71,22 +71,21 @@ end
 
 -- compability for AStar
 function Map:getNode(position)
-  entities = self:belowPosition(position)
+  local passable = true
   if #entities > 0 then
-  print(#entities)
-    for i, entity in self:belowPosition(position) do
+    for i, entity in ipairs(self:belowPosition(position)) do
       if entity.passable == false then
-        return false
+        return nil
       end
     end
   end
-  return Node(position, 1, position)
+  return Node(position, 1, position.x * self.width + position.y)
 end
-
 
 function Map:locationsAreEqual(a,b)
   return a.x == b.x and a.y == b.y
 end
+
 function Map:getAdjacentNodes(curnode, dest)
   local result = {}
   local cl = curnode.location
