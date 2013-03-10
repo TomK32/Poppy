@@ -7,6 +7,7 @@ Player.input_alternatives = {
       down = 'down',
       left = 'left',
       right = 'right',
+      action = ' '
     }
   },
   wasd = {
@@ -15,6 +16,7 @@ Player.input_alternatives = {
       down = 's',
       left = 'a',
       right = 'd',
+      action = ' '
     }
   }
 }
@@ -69,7 +71,7 @@ function Player:keydown(dt)
         if type(m) == 'function' then
           if self.dt_since_input > 0.5 then
             dt_change = true
-            m(self, key)
+            return m(self, key)
           end
         else
           self.dt_since_input = 0
@@ -89,4 +91,6 @@ function Player:keydown(dt)
   self.dt_since_input = self.dt_since_input + dt
 end
 
-
+function Player:action(key)
+  love.audio.play(game.sounds.player.woof)
+end
