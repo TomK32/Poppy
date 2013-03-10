@@ -49,7 +49,7 @@ function Player:setInputs(inputs)
   end
 end
 
-function Player:update(dt)
+function Player:updateActor(dt)
   self.moved = false
   self:keydown(dt)
   if self:animation() then
@@ -58,8 +58,6 @@ function Player:update(dt)
   if not self.moved then
     return false
   end
-
-  self.map:fitIntoMap(self.position)
 end
 
 function Player:keydown(dt)

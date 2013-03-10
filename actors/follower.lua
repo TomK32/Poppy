@@ -10,7 +10,7 @@ function Follower:initialize(target, name, animation)
   self.looked_for_path = false
 end
 
-function Follower:update(dt)
+function Follower:updateActor(dt)
   self.moved = false
   if self:animation() then
     self:animation():update(dt)
