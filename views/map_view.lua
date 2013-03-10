@@ -42,6 +42,7 @@ function MapView:update()
   love.graphics.translate(0, self.display.height)
   for i, layer in ipairs(self.map.layer_indexes) do
     entities = self.map.layers[layer]
+    table.sort(entities, function(a, b) return a.position.y > b.position.y end)
     for i,entity in ipairs(entities) do
       love.graphics.push()
       entity:draw()
