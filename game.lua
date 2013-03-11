@@ -13,12 +13,13 @@ game = {
 }
 
 function game:createFonts(offset)
+  local font_file = 'fonts/IM_Fell_English/IMFeENrm28P.ttf'
   self.fonts = {
     lineHeight = (10 + offset) * 1.7,
-    small = love.graphics.newFont(12 + offset),
-    regular = love.graphics.newImageFont('images/font.png',   " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&`'*#=[]\""),
-    large = love.graphics.newFont(24 + offset),
-    very_large = love.graphics.newFont(48 + offset)
+    small = love.graphics.newFont(font_file, 16 + offset),
+    regular = love.graphics.newFont(font_file, 20 + offset),
+    large = love.graphics.newFont(font_file, 24 + offset),
+    very_large = love.graphics.newFont(font_file, 32 + offset)
   }
 end
 

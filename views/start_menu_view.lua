@@ -17,7 +17,7 @@ function StartMenuView:drawContent()
   x = 130
   y = 80
 
-  love.graphics.scale(1.8,1.8)
+  love.graphics.setFont(game.fonts.very_large)
   love.graphics.setColor(255,205,55,200)
   love.graphics.print(game.title, x, y)
   love.graphics.setColor(255,250, 210, 255)
