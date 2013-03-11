@@ -6,6 +6,8 @@ require 'views/map_view'
 
 require 'lib/astar'
 
+require 'entities/entity'
+
 require 'actors/actor'
 require 'actors/player'
 require 'actors/follower'

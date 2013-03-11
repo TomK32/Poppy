@@ -1,9 +1,9 @@
-Actor = class("Actor")
+Actor = class("Actor", Entity)
 
 function Actor:initialize()
+  Entity.initialize(self, {})
   self.dt_between_step = 1
   self.position = { x = 0, y = 0}
-  self.moving_position = { x = 0, y = 0} -- for the walking animation
   self.passable = false
   self.state = 'standing'
 end
@@ -19,24 +19,13 @@ function Actor:tick()
   self.moved = true
 end
 
-function Actor:draw()
-  love.graphics.push()
-  love.graphics.setColor(255,255,255,255)
-  game.renderer:translate(
-      self.position.x - self.moving_position.x,
-      self.position.y - self.moving_position.y)
-  self:drawContent()
-  self:drawHealthBar()
-  love.graphics.pop()
-end
-
 function Actor:drawHealthBar()
 
 end
 
 function Actor:drawContent()
   if self:animation() then
-    self:animation():draw(self:image(), 0, 0)
+    Entity.drawContent(self)
   else
     game.renderer:print('@', {0,255,0,255}, 0, 0)
   end
@@ -68,20 +57,7 @@ function Actor:nodeToDirection(node)
     y = node.location.y - self.position.y }
 end
 
-function Actor:animation()
-  if not self.animation_data or not self.animation_data[self.state] then
-    return false
-  end
-  return self.animation_data[self.state].animation
-end
-
-function Actor:image()
-  if not self.animation_data or not self.animation_data[self.state] then
-    return false
-  end
-  return self.animation_data[self.state].image
-end
-
 function Actor:includesPoint(other_position)
   return self.position.x == other_position.x and self.position.y == other_position.y
 end
+

@@ -53,6 +53,6 @@ function love.quit()
 end
 
 function makeScreenshot()
-  local s = love.graphics.newScreenshot():encode(os.time() .. '.png', 'png')
+  love.graphics.newScreenshot():encode(os.time() .. '.png', 'png')
 end
 
