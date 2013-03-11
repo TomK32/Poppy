@@ -6,6 +6,15 @@ blood stains.
 
 _Sightseeing is not a crime._
 
+
+## Gameplay
+
+You play a cute little doggy named Bany. Poppy! You are with two
+maniacs, Tina and Chris who has killed your father Ian.
+In order to uncover Chris and get back on him, you need to grab his
+diary where he's written down all his crimes, and bring it to a helpful
+person before Chris or Tina catch you or they kill someone.
+
 ## License
 
 This is not open source, but I hope you enjoy reading the code and if
