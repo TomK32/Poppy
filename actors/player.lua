@@ -37,6 +37,7 @@ function Player:initialize(position, animation)
   self:setInputs(Player.input_alternatives['arrows'])
   self.animation_data = animation
   self.passable = true
+  self.has_diary = false
 end
 
 function Player:setInputs(inputs)

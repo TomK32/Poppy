@@ -22,6 +22,7 @@ function MapGenerator:randomize()
   local pos = self.level.player.position
   self:newActor(Follower(self.level.player, 'Tina', game.animations.tina), 21, pos.x - 2)
   self:newActor(Follower(self.level.player, 'Chris', game.animations.chris), 21, pos.x + 2)
+  self:newDiary()
 end
 
 function MapGenerator:update(dt)
@@ -36,8 +37,8 @@ function MapGenerator:seedPosition(seed_x,seed_y, scale_x, scale_y, offset_x, of
   offset_x = offset_x or 0
   offset_y = offset_y or 0
   return {
-    x = math.floor((SimplexNoise.Noise2D(seed_x*0.1, seed_x*0.1)) * self.map.width),
-    y = math.floor((SimplexNoise.Noise2D(seed_y*0.1, seed_y*0.1)) * self.map.height)
+    x = math.abs(math.floor((SimplexNoise.Noise2D(seed_x*0.1, seed_x*0.1)) * self.map.width)),
+    y = math.abs(math.floor((SimplexNoise.Noise2D(seed_y*0.1, seed_y*0.1)) * self.map.height))
   }
 end
 
@@ -51,6 +52,13 @@ function MapGenerator:newActor(actor, z, x, y)
   actor.orientation = math.pi * 1.5
   self.map:addEntity(actor)
   return actor
+end
+
+function MapGenerator:newDiary()
+  local diary = Diary({position = self:seedPosition(self.seed, self.seed+1)})
+  diary.position.z = 20
+  print(diary.position.x, diary.position.y, diary.position.z)
+  self.map:addEntity(diary)
 end
 
 function MapGenerator:fillTiles(x1, y1, x2, y2, callback)

@@ -7,6 +7,7 @@ require 'views/map_view'
 require 'lib/astar'
 
 require 'entities/entity'
+require 'entities/diary'
 
 require 'actors/actor'
 require 'actors/player'

@@ -27,6 +27,11 @@ function Level:update(dt)
       end
     end
   end
+  for i, entity in ipairs(self.map:belowPosition(self.player.position)) do
+    if entity.playerEntered then
+      entity:playerEntered(self.player)
+    end
+  end
   self.generator:update(dt)
 end
 
