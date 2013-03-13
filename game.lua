@@ -45,3 +45,8 @@ end
 function game:killed(player)
   game.current_state = FinishScreen(player)
 end
+
+
+function game.loadImage(image)
+  return love.graphics.newImage(image)
+end

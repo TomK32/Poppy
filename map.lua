@@ -73,6 +73,9 @@ end
 function Map:getNode(position)
   local passable = true
   if #entities > 0 then
+    if self.level.map_passable and self.level.map_passable[position.x] and self.level.map_passable[position.x][position.y] == 0 then
+      return nil
+    end
     for i, entity in ipairs(self:belowPosition(position)) do
       if entity.passable == false then
         return nil

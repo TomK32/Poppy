@@ -13,6 +13,13 @@ function MapView:initialize(map)
   self:updateDisplay()
   self.draw_cursor = false
   self.canvas = love.graphics.newCanvas(self.display.width, self.display.height)
+  if self.map.level.background then
+    self.background_scaling = 
+      math.min(
+        (self.display.width / self.map.level.background:getWidth()),
+        (self.display.height / self.map.level.background:getHeight())
+      )
+  end
 end
 
 function MapView:updateDisplay()
@@ -39,6 +46,14 @@ function MapView:update()
   love.graphics.setCanvas(self.canvas)
   love.graphics.setColor(100,153,100,255)
   love.graphics.rectangle('fill', 0,0,self.display.width, self.display.height)
+
+  if self.map.level.background then
+    love.graphics.push()
+    love.graphics.scale(self.background_scaling, self.background_scaling)
+    love.graphics.draw(self.map.level.background, 0, 0)
+    love.graphics.pop()
+  end
+
   love.graphics.translate(0, self.display.height)
   for i, layer in ipairs(self.map.layer_indexes) do
     entities = self.map.layers[layer]

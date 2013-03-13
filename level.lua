@@ -1,11 +1,20 @@
 Level = class("Level")
 
-function Level:initialize(level, seed)
-  self.level = level
-  self.seed = seed
-  self.dt = 0
+Level.levels = {
+  require('levels/stone_circle')
+}
 
-  self.seed = self.seed + self.level
+function Level:initialize(level, seed)
+
+  -- merge the level's values into this
+  assert(Level.levels[level], 'Level ' .. level .. ' is missing')
+  for k,v in pairs(Level.levels[level]) do
+    self[k] = v
+  end
+
+  self.level = level
+  self.seed = seed + level
+  self.dt = 0
 
   self.generator = MapGenerator(self.seed)
   self.map = Map(
