@@ -7,21 +7,23 @@ function createAnimation(image_path, grid_options, animation_options)
   return { image = image, animation = animation }
 end
 
-local default_grid_size = {32, 32}
+local default_grid_size = {48, 48}
 -- Create animation.
 local animations = {
 
-  chris = {
-    standing = createAnimation('images/tina_standing.png', default_grid_size, {'loop', '1-2,1', 0.8})
-    --    walking = createAnimation('images/tina_walking.png', {32, 32}, {'loop', '1-2,1', 0.2})
-  },
   tina = {
-    standing = createAnimation('images/chris_standing.png', default_grid_size, {'loop', '1-2,1', 0.8})
-    --    walking = createAnimation('images/tina_walking.png', {32, 32}, {'loop', '1-2,1', 0.2})
+    standing = createAnimation('images/tina_standing_48.png', default_grid_size, {'loop', '1-2,1', 0.8}),
+    walking = createAnimation('images/tina_walking_48.png', default_grid_size, {'loop', '1-2,1', 0.8})
+  },
+  chris = {
+    standing = createAnimation('images/chris_standing_48.png', default_grid_size, {'loop', '1-2,1', 0.8}),
+    walking = createAnimation('images/chris_walking_48.png', default_grid_size, {'loop', '1-2,1', 0.8})
   },
   poppy = {
-    standing = createAnimation('images/poppy_standing.png', default_grid_size, {'loop', '1-2,1', 0.8})
-  }
+    standing = createAnimation('images/poppy_standing_48.png', default_grid_size, {'loop', '1-2,1', 0.8}),
+    walking = createAnimation('images/poppy_walking_48.png', default_grid_size, {'loop', '1-2,1', 0.8})
+  },
+  diary = createAnimation('images/diary_48.png', default_grid_size, {'loop', '1-2,1', 0.8})
 }
 
 
