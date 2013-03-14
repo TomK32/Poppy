@@ -18,8 +18,8 @@ function Level:initialize(level, seed)
 
   self.generator = MapGenerator(self.seed)
   self.map = Map(
-    math.floor((game.graphics.mode.width - 150) / MapView.scale.x),
-    math.floor((game.graphics.mode.height - 40) / MapView.scale.y),
+    1376 / MapView.scale.x,
+    768  / MapView.scale.y,
     self.generator, self)
 
   self.astar = AStar(self.map)

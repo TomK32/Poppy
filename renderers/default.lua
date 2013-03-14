@@ -40,7 +40,7 @@ function DefaultRenderer:scaledX(x)
   return x * self.map_view.scale.x
 end
 function DefaultRenderer:scaledY(y)
-  return - y * self.map_view.scale.y
+  return y * self.map_view.scale.y
 end
 return DefaultRenderer
 

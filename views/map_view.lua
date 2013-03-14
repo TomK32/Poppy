@@ -4,7 +4,7 @@ MapView = class("MapView", View)
 MapView:include({
   map = nil,
   top_left = { x = 0, y = 0 }, -- offset
-  scale = { x = 32, y = 32 },
+  scale = { x = 48, y = 48 },
   canvas = nil,
 })
 
@@ -15,19 +15,19 @@ function MapView:initialize(map)
   self.canvas = love.graphics.newCanvas(self.display.width, self.display.height)
   if self.map.level.background then
     self.background_scaling = 
-      math.min(
+      math.ceil(100 * math.min(
         (self.display.width / self.map.level.background:getWidth()),
         (self.display.height / self.map.level.background:getHeight())
-      )
+      ))/100
   end
 end
 
 function MapView:updateDisplay()
   self.display = {
-    x = 10,
-    y = 10,
-    width = math.min(self.map.width * self.scale.x, game.graphics.mode.width) - 20,
-    height = math.min(self.map.height * self.scale.y, game.graphics.mode.height) - 20
+    x = 0,
+    y = 0,
+    width = math.min(self.map.width * self.scale.x, game.graphics.mode.width),
+    height = math.min(self.map.height * self.scale.y, game.graphics.mode.height)
   }
   self.display.tiles = {
     x = math.floor(self.display.width / self.scale.x),
@@ -55,7 +55,6 @@ function MapView:update()
     love.graphics.pop()
   end
 
-  love.graphics.translate(0, self.display.height)
   for i, layer in ipairs(self.map.layer_indexes) do
     entities = self.map.layers[layer]
     table.sort(entities, function(a, b) return a.position.y > b.position.y end)

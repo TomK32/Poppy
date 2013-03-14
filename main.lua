@@ -18,9 +18,9 @@ function love.load()
   local modes = love.graphics.getModes()
   table.sort(modes, function(a, b) return a.width*a.height > b.width*b.height end)
 
-  if modes[1].height >= 768 and modes[1].width >= 1366 then
+  if modes[1].height >= 768 and modes[1].width >= 1376 then
     -- our prefered size
-    game:setMode({height = 768, width = 1366})
+    game:setMode({height = 768, width = 1376})
   else
     -- but we also take something smaller
     game:setMode(modes[1])
