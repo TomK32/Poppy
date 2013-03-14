@@ -11,8 +11,7 @@ end
 function Actor:move(offset)
   self.moving_position = { x = self.moving_position.x + offset.x, y = self.moving_position.y + offset.y }
   self.state = 'walking'
-  self.position.x = self.position.x + offset.x
-  self.position.y = self.position.y + offset.y
+  self.position = self:addVectors(self.position, offset)
 end
 
 function Actor:tick()
