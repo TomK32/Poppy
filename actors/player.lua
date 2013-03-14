@@ -50,6 +50,12 @@ function Player:setInputs(inputs)
   end
 end
 
+function Player:move(offset)
+  if self.level.map:getNode(self:addVectors(self.position, offset)) then
+    Actor.move(self, offset)
+  end
+end
+
 function Player:updateActor(dt)
   self.moved = false
   self:keydown(dt)

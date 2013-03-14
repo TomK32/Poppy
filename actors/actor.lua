@@ -61,3 +61,6 @@ function Actor:includesPoint(other_position)
   return self.position.x == other_position.x and self.position.y == other_position.y
 end
 
+function Actor:addVectors(a, b)
+  return {x = a.x + b.x, y = a.y + b.y}
+end
