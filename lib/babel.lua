@@ -11,10 +11,8 @@
 babel = {}
 
 babel.current_locale  = nil     -- Remember the current locale
+babel.debug           = true   -- Display debug informations
 babel.locales_folders = {}      -- List of all the folders look in
-babel.dictionary      = {}      -- List of all the translations
-babel.formats         = {}      -- List of all the formats
-babel.debug           = false   -- Display debug informations
 
 
 --- Init babel with the wished values.
@@ -29,6 +27,10 @@ babel.init = function( settings )
 
 end
 
+babel.reset = function()
+  babel.dictionary      = {}      -- List of all the translations
+  babel.formats         = {}      -- List of all the formats
+end
 
 --- Add a locales folder to the existing list.
 -- @param folder The folder to look in.
@@ -46,11 +48,10 @@ babel.switchLocale = function( locale )
 
     locale = locale or babel.current_locale
 
-    -- Back to default
+    babel.reset()
+
     if locale == nil or locale == '' then
-      babel.current_locale = nil
-      babel.formats = nil
-      babel.dictionary = {}
+      return
     end
 
     for _, folder in pairs( babel.locales_folders ) do
@@ -67,7 +68,7 @@ babel.switchLocale = function( locale )
             language = chunk()
 
             babel.formats = babel.mergeTables( babel.formats, language.formats or {} )
-            babel.dictionary = language.translations or {}
+            babel.dictionary = babel.mergeTables( babel.dictionary, language.translations or {} )
 
         end
 
