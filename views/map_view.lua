@@ -49,6 +49,7 @@ function MapView:update()
 
   if self.map.level.background then
     love.graphics.push()
+    love.graphics.setColor(255 ,255 , 235 , 255)
     love.graphics.scale(self.background_scaling, self.background_scaling)
     love.graphics.draw(self.map.level.background, 0, 0)
     love.graphics.pop()
