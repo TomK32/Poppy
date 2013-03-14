@@ -14,7 +14,7 @@ function StartMenuView:drawContent()
   love.graphics.draw(self.background_image)
 
   gui.core.draw()
-  x = 130
+  x = math.min(400, game.graphics.mode.width / 3)
   y = 80
 
   love.graphics.setFont(game.fonts.very_large)
@@ -22,6 +22,12 @@ function StartMenuView:drawContent()
   love.graphics.print(game.title, x, y)
   love.graphics.setColor(255,250, 210, 255)
   love.graphics.print(game.title, x-1, y-1)
+
+  love.graphics.setFont(game.fonts.large)
+  love.graphics.translate(x, math.min(500, game.graphics.mode.height * 0.8))
+  love.graphics.print(_("Some nerds killed your Father."), 0, 0)
+  love.graphics.translate(0, game.fonts.lineHeight * 2)
+  love.graphics.print(_("Now it's time for you to get them hanged."), 0, 0)
 end
 
 function StartMenuView:update(dt)
