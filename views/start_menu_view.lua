@@ -13,6 +13,7 @@ function StartMenuView:drawContent()
   love.graphics.setColor(255 ,255 , 235 , 255)
   love.graphics.draw(self.background_image)
 
+  love.graphics.setFont(game.fonts.large)
   gui.core.draw()
   x = math.min(400, game.graphics.mode.width / 3)
   y = 80
@@ -53,7 +54,7 @@ function StartMenuView:update(dt)
   end
 
   gui.group.push({grow = "down", pos = {0, 40}})
-  local locales = {English = '', Deutsch = 'de-DE'}
+  local locales = {English = '', Deutsch = 'de-DE', ['Русский'] = 'ru-RU'}
   for language, locale in pairs(locales) do
     if gui.Button({text = language}) then
       babel.switchLocale(locale)

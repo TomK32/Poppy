@@ -26,6 +26,13 @@ Pressing F2 will make a screenshot which will stored in whatever
 application cache files directory is default on your operating system.
 
 
+## Credits
+
+* Inspiration: Sightseers movie
+* The font used i Comfortaa Regular by Johan Aakerlund licensed under the SIL OPEN FONT LICENSE Version 1.1  
+* Artwork by Anna Lazareva
+* Programming by Thomas R. Koll
+
 ## License
 
 This is not open source, but I hope you enjoy reading the code and if

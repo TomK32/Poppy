@@ -14,7 +14,7 @@ game = {
 }
 
 function game:createFonts(offset)
-  local font_file = 'fonts/IM_Fell_English/IMFeENrm28P.ttf'
+  local font_file = 'fonts/Comfortaa-Regular.ttf'
   self.fonts = {
     lineHeight = (10 + offset) * 1.7,
     small = love.graphics.newFont(font_file, 16 + offset),
