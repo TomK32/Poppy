@@ -30,20 +30,29 @@ function StartMenuView:update(dt)
 
   gui.group.push({grow = "down", pos = {x, y}})
   -- start the game
-  if gui.Button({text = '[N]ew game'}) then
+  if gui.Button({text = _('[N]ew game')}) then
     game:start()
   end
   gui.group.push({grow = "down", pos = {0, 20}})
 
   -- fullscreen toggle
   if self.fullscreen then
-    text = 'Windowed'
+    text = _('Windowed')
   else
-    text = 'Fullscreen'
+    text = _('Fullscreen')
   end
   if gui.Button({text = text}) then
     self.fullscreen = not self.fullscreen
     love.graphics.setMode(love.graphics.getWidth(), love.graphics.getHeight(), self.fullscreen)
   end
+
+  gui.group.push({grow = "down", pos = {0, 40}})
+  local locales = {English = '', Deutsch = 'de-DE'}
+  for language, locale in pairs(locales) do
+    if gui.Button({text = language}) then
+      babel.switchLocale(locale)
+    end
+  end
+
 
 end

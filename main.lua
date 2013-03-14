@@ -4,6 +4,7 @@
 --
 -- (C) 2013 Anna Lazareva, Thomas R. Koll
 
+require 'lib/babel'
 require 'lib/middleclass'
 require 'game'
 require 'views/view'
@@ -13,6 +14,7 @@ require 'game_states/map_state'
 require 'game_states/finish_screen'
 
 function love.load()
+  babel.init({locale = 'en-UK', locales_folders = {'locales'}})
   local modes = love.graphics.getModes()
   table.sort(modes, function(a, b) return a.width*a.height > b.width*b.height end)
   game:setMode(modes[1])
