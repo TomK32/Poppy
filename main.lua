@@ -17,7 +17,14 @@ function love.load()
   babel.init({locale = 'en-UK', locales_folders = {'locales'}})
   local modes = love.graphics.getModes()
   table.sort(modes, function(a, b) return a.width*a.height > b.width*b.height end)
-  game:setMode(modes[1])
+
+  if modes[1].height >= 768 and modes[1].width >= 1366 then
+    -- our prefered size
+    game:setMode({height = 768, width = 1366})
+  else
+    -- but we also take something smaller
+    game:setMode(modes[1])
+  end
 
   game:startMenu()
   --love.audio.play(game.sounds.music[1])
