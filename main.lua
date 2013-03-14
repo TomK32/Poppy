@@ -14,13 +14,13 @@ require 'game_states/finish_screen'
 
 function love.load()
   local modes = love.graphics.getModes()
-  table.sort(modes, function(a, b) return a.width*a.height < b.width*b.height end)
+  table.sort(modes, function(a, b) return a.width*a.height > b.width*b.height end)
   game:setMode(modes[1])
 
   game:startMenu()
   --love.audio.play(game.sounds.music[1])
-  love.graphics.setMode(love.graphics.getWidth(), love.graphics.getHeight(), game.graphics.fullscreen)
-  game:start()
+  --love.graphics.setMode(love.graphics.getWidth(), love.graphics.getHeight(), game.graphics.fullscreen)
+  --game:start()
 end
 
 function love.draw()

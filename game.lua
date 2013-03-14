@@ -3,7 +3,8 @@ game = {
   title = 'Poppy (working title)',
   debug = false,
   graphics = {
-    mode = { height = love.graphics.getHeight(), width = love.graphics.getWidth() }
+    mode = { height = love.graphics.getHeight(), width = love.graphics.getWidth() },
+    fullscreen = true
   },
   fonts = {},
   renderer = require('renderers/default'),
@@ -25,7 +26,7 @@ end
 
 function game:setMode(mode)
   self.graphics.mode = mode
-  love.graphics.setMode(mode.width, mode.height)
+  love.graphics.setMode(mode.width, mode.height, mode.fullscreen or self.graphics.fullscreen)
   if self.graphics.mode.height < 600 then
     self:createFonts(-2)
   else
