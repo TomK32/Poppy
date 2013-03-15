@@ -30,8 +30,8 @@ local NO_WIDGET = {}
 
 local cycle = {
 	-- binding = {key = key, modifier1, modifier2, ...} XXX: modifiers are OR-ed!
-	prev = {key = 'tab', 'lshift', 'rshift'},
-	next = {key = 'tab'},
+	prev = {{key = 'up'}, {key = 'tab', 'lshift', 'rshift'}},
+	next = {{key = 'down'}, {key = 'tab'}},
 }
 
 local function pressed(...)   key, code = ... end
@@ -46,17 +46,22 @@ local function tryGrab(id)
 	end
 end
 
-local function isBindingDown(bind)
-	local modifiersDown = #bind == 0 or love.keyboard.isDown(unpack(bind))
-	return key == bind.key and modifiersDown
+local function isBindingDown(binds)
+  for i, bind in pairs(binds) do
+  	local modifiersDown = #bind == 0 or love.keyboard.isDown(unpack(bind))
+	  if key == bind.key and modifiersDown then
+      return true
+    end
+  end
+  return false
 end
 
 local function makeCyclable(id)
 	tryGrab(id)
 	if hasFocus(id) then
 		if isBindingDown(cycle.prev) then
-			setFocus(lastwidget)
-			key = nil
+      setFocus(lastwidget)
+      key = nil
 		elseif isBindingDown(cycle.next) then
 			setFocus(nil)
 			key = nil
