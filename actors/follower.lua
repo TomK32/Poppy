@@ -8,12 +8,16 @@ function Follower:initialize(target, name, animation)
   self.name = name
   self.animation_data = animation
   self.looked_for_path = false
+  self.shouted_for_target = 5 * 0.05
 end
 
 function Follower:updateActor(dt)
   self.moved = false
   if self:animation() then
     self:animation():update(dt)
+  end
+  if self.shouted_for_target > 0 then
+    self.shouted_for_target = self.shouted_for_target - dt
   end
   if self:distanceToTarget() < 3 then
     return
@@ -30,6 +34,10 @@ function Follower:updateActor(dt)
     if path then
       self:move(self:nodeToDirection(path:getNodes()[1]))
       self.looked_for_path = false
+      if self.shouted_for_target <= 0 then
+        self.shouted_for_target = 10*dt
+        love.audio.play(game.sounds.speech.poppy_come_back)
+      end
     end 
 
     -- and now revert the temporary change for lua-astar
