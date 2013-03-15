@@ -1,6 +1,14 @@
 
 Follower = class("Follower", Actor)
 
+-- singleton, run only once when the target has found the diary
+Follower.shouted_for_diary = false
+
+-- singleton, seek out and put the target back on its leash
+Follower.catch_target = false
+Follower.particle_images = {
+  evil = love.graphics.newImage('images/particles/evil_follower.png')
+}
 
 function Follower:initialize(target, name, animation)
   Actor.initialize(self)
@@ -18,7 +26,14 @@ function Follower:updateActor(dt)
   end
   if not Follower.shouted_for_diary and self.target:has('Diary') then
     Follower.shouted_for_diary = true
+    Follower.catch_target = true
     love.audio.play(game.sounds.speech.shout_for_diary)
+  end
+  if self.particles then
+    self.particles:update(dt)
+  elseif Follower.catch_target then
+    -- they hunt the player, let's give them evil particles
+    self:startEvilParticles()
   end
   if self:distanceToTarget() < 3 then
     return
@@ -54,3 +69,15 @@ function Follower:distanceToTarget()
   return self:distanceTo(self.target.position)
 end
 
+function Follower:startEvilParticles()
+  self.particles = love.graphics.newParticleSystem(Follower.particle_images.evil, 3)
+  self.particles:setEmissionRate          (20)
+  self.particles:setLifetime              (-1)
+  self.particles:setParticleLife          (1.5)
+  self.particles:setPosition              (game.tile_size.x / 2, game.tile_size.y / 2)
+  self.particles:setDirection             (math.pi * 1.5)
+  self.particles:setSpread                (1)
+  self.particles:setSpeed                 (0, 30)
+  self.particles:setGravity               (0)
+  self.particles:setRadialAcceleration    (10)
+end

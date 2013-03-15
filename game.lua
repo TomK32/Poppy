@@ -9,8 +9,8 @@ game = {
   fonts = {},
   renderer = require('renderers/default'),
   sounds = require('sounds'),
-  realtime = true,
-  animations = require('animations')
+  animations = require('animations'),
+  tile_size = {x = 48, y = 48}
 }
 
 function game:createFonts(offset)

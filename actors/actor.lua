@@ -23,6 +23,9 @@ function Actor:drawHealthBar()
 end
 
 function Actor:drawContent()
+  if self.particles then
+    love.graphics.draw(self.particles, 0, 0)
+  end
   if self:animation() then
     Entity.drawContent(self)
   else
