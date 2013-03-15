@@ -37,7 +37,7 @@ function Player:initialize(position, animation)
   self:setInputs(Player.input_alternatives['arrows'])
   self.animation_data = animation
   self.passable = true
-  self.has_diary = false
+  self.inventory = { }
 end
 
 function Player:setInputs(inputs)
@@ -98,4 +98,16 @@ end
 
 function Player:action(key)
   love.audio.play(game.sounds.player.woof)
+end
+
+function Player:has(other_item)
+  for i, item in ipairs(self.inventory) do
+    if item.name == other_item then
+      return true
+    end
+  end
+end
+
+function Player:addToInventory(item)
+  table.insert(self.inventory, item)
 end

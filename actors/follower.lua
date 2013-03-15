@@ -16,7 +16,7 @@ function Follower:updateActor(dt)
   if self:animation() then
     self:animation():update(dt)
   end
-  if self.target.has_diary and not Follower.shouted_for_diary then
+  if not Follower.shouted_for_diary and self.target:has('Diary') then
     Follower.shouted_for_diary = true
     love.audio.play(game.sounds.speech.shout_for_diary)
   end
