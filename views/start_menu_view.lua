@@ -7,6 +7,8 @@ StartMenuView = class("MenuView", View)
 gui.core.style.color.normal.bg = {80,180,80}
 StartMenuView.background_image = love.graphics.newImage('images/start_menu_background.png')
 
+StartMenuView.volume = { value = love.audio.getVolume(), min = 0.01, max = 1.0 }
+
 function StartMenuView:drawContent()
   love.graphics.setFont(game.fonts.regular)
 
@@ -59,6 +61,12 @@ function StartMenuView:update(dt)
     if gui.Button({text = language}) then
       babel.switchLocale(locale)
     end
+  end
+
+  gui.group.push({grow = "down", pos = {0, 20}})
+  gui.Label({text = _("Volume")})
+  if gui.Slider({info = self.volume}) then
+    love.audio.setVolume(self.volume.value)
   end
 
 
