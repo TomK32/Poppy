@@ -17,10 +17,7 @@ function Level:initialize(level, seed)
   self.dt = 0
 
   self.generator = MapGenerator(self.seed)
-  self.map = Map(
-    1376 / MapView.scale.x,
-    768  / MapView.scale.y,
-    self.generator, self)
+  self.map = Map(28, 15, self.generator, self)
 
   self.astar = AStar(self.map)
 

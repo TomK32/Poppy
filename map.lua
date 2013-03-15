@@ -30,14 +30,14 @@ function Map:fitIntoMap(position)
   -- reappears on the opposing side
   if position.x < 0 then
     position.x = self.width
-  elseif position.x > self.width then
-    position.x = 0
+  elseif position.x + 1 >= self.width then
+    position.x = self.width - 1
   end
   -- for the up/down make it hard borders
   if position.y < 0 then
     position.y = 0
-  elseif position.y > self.height then
-    position.y = self.height
+  elseif position.y + 1 > self.height then
+    position.y = self.height - 1
   end
   return position
 end

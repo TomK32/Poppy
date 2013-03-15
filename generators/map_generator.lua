@@ -58,7 +58,6 @@ end
 function MapGenerator:newDiary()
   local diary = Diary({position = self:seedPosition(self.seed, self.seed+1)})
   diary.position.z = 20
-  print(diary.position.x, diary.position.y, diary.position.z)
   self.map:addEntity(diary)
 end
 
