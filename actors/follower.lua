@@ -20,9 +20,6 @@ function Follower:updateActor(dt)
     Follower.shouted_for_diary = true
     love.audio.play(game.sounds.speech.shout_for_diary)
   end
-  if self.shouted_for_target > 0 then
-    self.shouted_for_target = self.shouted_for_target - dt
-  end
   if self:distanceToTarget() < 3 then
     return
   elseif self.looked_for_path == false then
@@ -39,10 +36,13 @@ function Follower:updateActor(dt)
       self:move(self:nodeToDirection(path:getNodes()[1]))
       self.looked_for_path = false
       if self.shouted_for_target <= 0 then
-        self.shouted_for_target = 10*dt
+        self.shouted_for_target = 5
         love.audio.play(game.sounds.speech.poppy_come_back)
       end
     end 
+    if self.shouted_for_target > 0 then
+      self.shouted_for_target = self.shouted_for_target - 1
+    end
 
     -- and now revert the temporary change for lua-astar
     self.passable = self_passable
