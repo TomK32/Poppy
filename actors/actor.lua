@@ -43,7 +43,7 @@ function Actor:update(dt)
     self.state = 'standing'
   end
   self:updateActor(dt)
-  local old_position = { self.position.x, y = self.position.y }
+  local old_position = { x = self.position.x, y = self.position.y }
   self.map:fitIntoMap(self.position)
   if old_position.x ~= self.position.x or old_position.y ~= self.position.y then
     self.moving_position = {x = 0, y = 0}
