@@ -67,6 +67,13 @@ function Player:updateActor(dt)
   end
 end
 
+function Player:draw()
+  Actor.draw(self)
+  love.graphics.push()
+  self:drawInventory()
+  love.graphics.pop()
+end
+
 function Player:keydown(dt)
   local movement = {x = 0, y = 0}
   local dt_change = false
@@ -110,4 +117,19 @@ end
 
 function Player:addToInventory(item)
   table.insert(self.inventory, item)
+end
+
+
+function Player:drawInventory()
+  if #self.inventory > 0 then
+    game.renderer:rectangle('fill', {255,255,255,100}, 1.25, 0.25, 1.5, #self.inventory + 0.5)
+    game.renderer:rectangle('line', {55,55,55,100}, 1.25, 0.25, 1.5, #self.inventory + 0.5)
+  end
+  for i, item in ipairs(self.inventory) do
+    if item.draw then
+      item.position.x = i + 0.5
+      item.position.y = 0.5
+      item:draw()
+    end
+  end
 end

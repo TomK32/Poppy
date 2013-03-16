@@ -4,6 +4,7 @@ Entity.map = nil
 Entity._type = nil
 
 function Entity:initialize(options)
+  self.name = self.class.name
   self.moving_position = { x = 0, y = 0} -- for the walking animation
   for k, v in pairs(options) do
     self[k] = v
