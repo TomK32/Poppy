@@ -36,10 +36,12 @@ end
 
 
 function game:startMenu()
+  love.mouse.setVisible(true)
   game.current_state = StartMenu()
 end
 
 function game:start()
+  love.mouse.setVisible(false)
   game.current_state = MapState()
 end
 
