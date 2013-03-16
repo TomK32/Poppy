@@ -17,6 +17,8 @@ function Follower:initialize(target, name, animation)
   self.animation_data = animation
   self.looked_for_path = false
   self.shouted_for_target = 5 * 0.05
+  self.target_max_distance = 5
+  self.dt_since_last_step = 0.0
 end
 
 function Follower:updateActor(dt)
@@ -35,7 +37,14 @@ function Follower:updateActor(dt)
     -- they hunt the player, let's give them evil particles
     self:startEvilParticles()
   end
-  if self:distanceToTarget() < 3 then
+  self.dt_since_last_step = self.dt_since_last_step + dt
+  if self.dt_since_last_step < 50 * dt then
+    return
+  end
+  self.dt_since_last_step = 0
+
+  if self:distanceToTarget() < self.target_max_distance then --and not Follower.catch_target then
+    self:move({x = math.floor(math.random() * 3)-1, y = math.floor(math.random() * 3)-1})
     return
   elseif self.looked_for_path == false then
     -- to make lua-astar work we need to make self and the target passable
