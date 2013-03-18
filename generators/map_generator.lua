@@ -18,11 +18,13 @@ end
 
 -- fill a whole map
 function MapGenerator:randomize()
-  self.level.player = self:newActor(Player({}, game.animations.poppy), 21)
+  self.level.player = self:newActor(Player({}, game.animations.poppy), 21, math.floor(self.map.width / 2, 2)
+)
   self.level.player.level = self.level
   local pos = self.level.player.position
   self:newActor(Follower(self.level.player, 'Tina', game.animations.tina), 21, pos.x - 2)
   self:newActor(Follower(self.level.player, 'Chris', game.animations.chris), 21, pos.x + 2)
+  self:newActor(Tourist(self.level.player, 'Tourist', game.animations.tourist[1]), 21)
   self:newDiary()
 end
 
@@ -47,9 +49,10 @@ end
 -- x1, y1, x2, y2 to limit the area where to spawn
 function MapGenerator:newActor(actor, z, x, y)
   self:incrementSeed(2)
-  actor.position.x = x or math.floor(self.map.width / 2)
-  actor.position.y = y or 2
-  actor.position.z = z or 1
+  actor.position = self:seedPosition(self.seed, self.seed+1)
+  if x then actor.position.x = x end
+  if y then actor.position.y = y end
+  if z then actor.position.z = z end
   actor.map = self.level.map
   self.map:addEntity(actor)
   return actor

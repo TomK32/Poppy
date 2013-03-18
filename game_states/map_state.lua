@@ -12,6 +12,7 @@ require 'entities/diary'
 require 'actors/actor'
 require 'actors/player'
 require 'actors/follower'
+require 'actors/tourist'
 
 MapState = class("MapState", State)
 function MapState:initialize()

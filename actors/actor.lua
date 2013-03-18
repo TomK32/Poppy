@@ -9,15 +9,24 @@ function Actor:initialize()
 end
 
 function Actor:move(offset)
-  self.moving_position = { x = self.moving_position.x + offset.x, y = self.moving_position.y + offset.y }
-  if offset.x < 0 then
-    self.state = 'walking_left'
-  else
-    self.state = 'walking_right'
-  end
   local new_position = self:addVectors(self.position, offset)
   if self.map:getNode(new_position) then
+    -- empty field, we can move
+    if offset.x < 0 then
+      self.state = 'walking_left'
+    else
+      self.state = 'walking_right'
+    end
+    self.moving_position = { x = self.moving_position.x + offset.x, y = self.moving_position.y + offset.y }
     self.position = new_position
+  else
+    -- there's an obstacle, check all entities if they accept a collision
+    local entities = self.map:belowPosition(new_position)
+    for i, entity in ipairs(entities) do
+      if entity.collision then
+        entity:collision(self)
+      end
+    end
   end
 end
 
@@ -52,7 +61,9 @@ function Actor:update(dt)
   if m_x == 0 and m_y == 0 then
     self.state = 'standing'
   end
-  self:updateActor(dt)
+  if self.updateActor then
+    self:updateActor(dt)
+  end
   local old_position = { x = self.position.x, y = self.position.y }
   self.map:fitIntoMap(self.position)
   if old_position.x ~= self.position.x or old_position.y ~= self.position.y then

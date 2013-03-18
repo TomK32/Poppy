@@ -3,8 +3,8 @@ require 'views/finish_view'
 
 FinishScreen = class("FinishScreen", State)
 
-function FinishScreen:initialize(player)
-  self.view = FinishView(player)
+function FinishScreen:initialize(player, message)
+  self.view = FinishView(player, message)
 end
 
 function FinishScreen:keypressed(key)

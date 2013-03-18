@@ -28,7 +28,7 @@ local animations = {
   },
   tourist = {
     {
-      standing = createAnimation('images/tourist_1_walking_48.png', default_grid_size, {'loop', '1-4,1', 0.8}),
+      standing = createAnimation('images/tourist_1_walking_48.png', default_grid_size, {'loop', '1-2,1', 0.8}),
       walking_right = createAnimation('images/tourist_1_walking_48.png', default_grid_size, {'loop', '1-4,1', 0.8}),
       walking_left = createAnimation('images/tourist_1_walking_48.png', default_grid_size, {'loop', '5-8,1', 0.8}),
     }

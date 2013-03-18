@@ -46,9 +46,12 @@ function game:start()
 end
 
 function game:killed(player)
-  game.current_state = FinishScreen(player)
+  game.current_state = FinishScreen(player, 'You have lost :(')
 end
 
+function game:victory(player)
+  game.current_state = FinishScreen(player, 'You have won!')
+end
 
 function game.loadImage(image)
   return love.graphics.newImage(image)
