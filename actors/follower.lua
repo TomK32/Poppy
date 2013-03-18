@@ -45,7 +45,7 @@ function Follower:updateActor(dt)
 
   if self:distanceToTarget() < self.target_max_distance then --and not Follower.catch_target then
     local movement = {x = math.floor(math.random() * 3)-1, y = math.floor(math.random() * 3)-1}
-    if self:distanceToTarget(self:addVectors(self.position, movement)) < self.target_max_distance then
+    if self:distanceToTarget(self:addVectors(self.target.position, {x = - movement.x, y = - movement.y})) < self.target_max_distance/2 then
       self:move(movement)
       return
     end
