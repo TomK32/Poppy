@@ -44,8 +44,11 @@ function Follower:updateActor(dt)
   self.dt_since_last_step = 0
 
   if self:distanceToTarget() < self.target_max_distance then --and not Follower.catch_target then
-    self:move({x = math.floor(math.random() * 3)-1, y = math.floor(math.random() * 3)-1})
-    return
+    local movement = {x = math.floor(math.random() * 3)-1, y = math.floor(math.random() * 3)-1}
+    if self:distanceToTarget(self:addVectors(self.position, movement)) < self.target_max_distance then
+      self:move(movement)
+      return
+    end
   elseif self.looked_for_path == false then
     -- to make lua-astar work we need to make self and the target passable
     local self_passable = self.passable
@@ -74,8 +77,8 @@ function Follower:updateActor(dt)
   end
 end
 
-function Follower:distanceToTarget()
-  return self:distanceTo(self.target.position)
+function Follower:distanceToTarget(position)
+  return self:distanceTo(position or self.target.position)
 end
 
 function Follower:startEvilParticles()

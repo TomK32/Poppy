@@ -50,7 +50,7 @@ function MapGenerator:newActor(actor, z, x, y)
   actor.position.x = x or math.floor(self.map.width / 2)
   actor.position.y = y or 2
   actor.position.z = z or 1
-  actor.orientation = math.pi * 1.5
+  actor.map = self.level.map
   self.map:addEntity(actor)
   return actor
 end

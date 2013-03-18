@@ -11,7 +11,10 @@ end
 function Actor:move(offset)
   self.moving_position = { x = self.moving_position.x + offset.x, y = self.moving_position.y + offset.y }
   self.state = 'walking'
-  self.position = self:addVectors(self.position, offset)
+  local new_position = self:addVectors(self.position, offset)
+  if self.map:getNode(new_position) then
+    self.position = new_position
+  end
 end
 
 function Actor:tick()
