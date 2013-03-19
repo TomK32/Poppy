@@ -44,6 +44,7 @@ do
   if [ -f "$BUILD/$A" ]; then rm "$BUILD/$A"; fi
   unzip -q -d "$BUILD" "$A.zip"
   cat "$GAME" >> "$A/love.exe"
+  mv "$A/love.exe" "$A/$NAME.exe"
 
   mv "$A" "$BUILD/${FILENAME}_$arch"
   R_PWD=`pwd`
