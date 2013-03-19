@@ -17,8 +17,10 @@ require 'game_states/new_version'
 function love.load()
   local language = os.getenv('LANG')
   local locale = 'en-UK'
-  if string.find(language, '^de') ~= nil then locale = 'de-DE'
-  elseif string.find(language, '^ru') ~= nil then locale = 'ru-RU' end
+  if language ~= nil then
+    if string.find(language, '^de') ~= nil then locale = 'de-DE'
+    elseif string.find(language, '^ru') ~= nil then locale = 'ru-RU' end
+  end
 
   babel.init({locale = locale, locales_folders = {'locales'}})
 
