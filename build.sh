@@ -28,7 +28,7 @@ done
 # Take HEAD make an archive of it
 git archive HEAD -o "$BUILD/$FILENAME.zip"
 
-echo "game = {}; game.version = '${GAME_VERSION}'" > "version.lua"
+echo "return '${GAME_VERSION}'" > "version.lua"
 # Add the version file
 zip -q "$BUILD/$FILENAME.zip" "version.lua"
 mv "$BUILD/$FILENAME.zip" "$BUILD/$FILENAME.love"
