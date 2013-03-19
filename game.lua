@@ -11,7 +11,8 @@ game = {
   sounds = require('sounds'),
   animations = require('animations'),
   tile_size = {x = 48, y = 48},
-  version = require('version')
+  version = require('version'),
+  url = 'http://ananasblau.com/poppy'
 }
 
 function game:createFonts(offset)
@@ -47,11 +48,11 @@ function game:start()
 end
 
 function game:killed(player)
-  game.current_state = FinishScreen(player, 'You have lost :(')
+  game.current_state = FinishScreen(player, _('You have lost :('))
 end
 
 function game:victory(player)
-  game.current_state = FinishScreen(player, 'You have won!')
+  game.current_state = FinishScreen(player, _('You have won!'))
 end
 
 function game.loadImage(image)

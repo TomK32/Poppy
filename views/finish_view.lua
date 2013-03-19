@@ -18,5 +18,5 @@ function FinishView:drawContent()
   love.graphics.print(self.message, 0, 0)
 
   love.graphics.setColor(255,255,255,255)
-  love.graphics.print('Press [space] to return to the start menu', 0, 50)
+  love.graphics.print(_('Press [space] to return to the start menu'), 0, 50)
 end

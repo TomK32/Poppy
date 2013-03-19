@@ -20,16 +20,17 @@ function NewVersionView:drawContent()
 
   love.graphics.print(_('There is a new version: ') .. self.version, x, y)
   love.graphics.print(_('Do you want to upgrade?'), x, y+30)
+  love.graphics.print(game.url, x, y+60)
 
   love.graphics.setColor(255,255,255,255)
   gui.core.draw()
   gui.group.push({grow = "right", pos = {x, y+120}})
   -- start the game
-  if gui.Button({text = _('Open website')}) then
+  if gui.Button({text = _('Yes')}) then
     self.state:openUrl()
   end
   gui.group.push({grow = "right", pos = {20, 0}})
-  if gui.Button({text = _('Cancel')}) then
+  if gui.Button({text = _('No')}) then
     self.state:close()
   end
 

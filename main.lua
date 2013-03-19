@@ -15,7 +15,14 @@ require 'game_states/finish_screen'
 require 'game_states/new_version'
 
 function love.load()
-  babel.init({locale = 'en-UK', locales_folders = {'locales'}})
+  local language = os.getenv('LANG')
+  local locale = 'en-UK'
+  if string.find(language, '^de') ~= nil then locale = 'de-DE'
+  elseif string.find(language, '^ru') ~= nil then locale = 'ru-RU' end
+
+  babel.init({locale = locale, locales_folders = {'locales'}})
+
+
   local modes = love.graphics.getModes()
   table.sort(modes, function(a, b) return a.width*a.height > b.width*b.height end)
 
