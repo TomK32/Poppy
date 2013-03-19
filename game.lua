@@ -10,7 +10,8 @@ game = {
   renderer = require('renderers/default'),
   sounds = require('sounds'),
   animations = require('animations'),
-  tile_size = {x = 48, y = 48}
+  tile_size = {x = 48, y = 48},
+  version = require('version')
 }
 
 function game:createFonts(offset)
@@ -55,4 +56,9 @@ end
 
 function game.loadImage(image)
   return love.graphics.newImage(image)
+end
+
+
+function game:newVersion(version, url)
+  game.current_state = NewVersion(version, url)
 end

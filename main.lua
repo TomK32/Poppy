@@ -12,6 +12,7 @@ require 'game_states/state'
 require 'game_states/start_menu'
 require 'game_states/map_state'
 require 'game_states/finish_screen'
+require 'game_states/new_version'
 
 function love.load()
   babel.init({locale = 'en-UK', locales_folders = {'locales'}})
@@ -26,7 +27,12 @@ function love.load()
     game:setMode(modes[1])
   end
 
-  game:startMenu()
+  local version = require('check_of_updates')
+  if version and version.version and version.url then
+    game:newVersion(version.version, version.url)
+  else
+    game:startMenu()
+  end
   --love.audio.play(game.sounds.music[1])
   --love.graphics.setMode(love.graphics.getWidth(), love.graphics.getHeight(), game.graphics.fullscreen)
   --game:start()
