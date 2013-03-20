@@ -18,7 +18,7 @@ game = {
 function game:createFonts(offset)
   local font_file = 'fonts/Comfortaa-Regular.ttf'
   self.fonts = {
-    lineHeight = (10 + offset) * 1.7,
+    lineHeight = (20 + offset) * 1.7,
     small = love.graphics.newFont(font_file, 16 + offset),
     regular = love.graphics.newFont(font_file, 20 + offset),
     large = love.graphics.newFont(font_file, 24 + offset),
@@ -62,4 +62,8 @@ end
 
 function game:newVersion(version, url)
   game.current_state = NewVersion(version, url)
+end
+
+function game:showCredits()
+  game.current_state = State(self, 'Credits', CreditsView())
 end

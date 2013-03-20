@@ -69,5 +69,8 @@ function StartMenuView:update(dt)
     love.audio.setVolume(self.volume.value)
   end
 
+  if gui.Button({text = _("Credits")}) then
+    game:showCredits()
+  end
 
 end

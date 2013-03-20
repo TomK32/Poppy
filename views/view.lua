@@ -1,9 +1,11 @@
 
 View = class("View")
 View:include({
-  display = {x = 0, y = 0, width = 200, height = 100},
+  display = {x = 0, y = 0, width = 0, height = 0},
   focus = nil,
-
+  initialize = function(self)
+    self:setDisplay(self.display)
+  end,
   draw = function(self)
     love.graphics.push()
     love.graphics.translate(self.display.x, self.display.y)
@@ -14,6 +16,12 @@ View:include({
 
 function View:setDisplay(display)
   self.display = display
+  if self.display.height == 0 then
+    self.display.height = game.graphics.mode.height
+  end
+  if self.display.width == 0 then
+    self.display.width = game.graphics.mode.width
+  end
   if display.align then
     if display.align.x == 'center' then
       display.x = game.graphics.mode.width / 2 - display.width / 2
