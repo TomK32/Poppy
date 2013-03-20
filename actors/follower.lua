@@ -10,11 +10,10 @@ Follower.particle_images = {
   evil = love.graphics.newImage('images/particles/evil_follower.png')
 }
 
-function Follower:initialize(target, name, animation)
-  Actor.initialize(self)
-  self.target = target -- who to follow
-  self.name = name
-  self.animation_data = animation
+Follower.target = nil -- who to follow
+Follower.name = name
+function Follower:initialize(options)
+  Actor.initialize(self, options)
   self.looked_for_path = false
   self.shouted_for_target = 5 * 0.05
   self.target_max_distance = 5

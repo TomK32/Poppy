@@ -18,13 +18,13 @@ end
 
 -- fill a whole map
 function MapGenerator:randomize()
-  self.level.player = self:newActor(Player({}, game.animations.poppy), 21, math.floor(self.map.width / 2, 2)
+  self.level.player = self:newActor(Player({animation_data = game.animations.poppy}), 21, math.floor(self.map.width / 2, 2)
 )
   self.level.player.level = self.level
   local pos = self.level.player.position
-  self:newActor(Follower(self.level.player, 'Tina', game.animations.tina), 21, pos.x - 2)
-  self:newActor(Follower(self.level.player, 'Chris', game.animations.chris), 21, pos.x + 2)
-  self:newActor(Tourist(self.level.player, 'Tourist', game.animations.tourist[1]), 21)
+  self:newActor(Follower({target = self.level.player, 'Tina', animation_data = game.animations.tina}), 21, pos.x - 2)
+  self:newActor(Follower({target = self.level.player, 'Chris', animation_data = game.animations.chris}), 21, pos.x + 2)
+  self:newActor(Tourist({name = 'Tourist', animation_data = game.animations.tourist[1]}), 21)
   self:newDiary()
 end
 

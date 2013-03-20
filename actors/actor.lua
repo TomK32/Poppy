@@ -1,7 +1,7 @@
 Actor = class("Actor", Entity)
 
-function Actor:initialize()
-  Entity.initialize(self, {})
+function Actor:initialize(options)
+  Entity.initialize(self, options)
   self.dt_between_step = 1
   self.position = { x = 0, y = 0}
   self.passable = false

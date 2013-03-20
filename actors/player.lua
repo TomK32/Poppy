@@ -27,15 +27,14 @@ Player.movements = {
   right = { x =   1, y = 0 },
 }
 
-function Player:initialize(position, animation)
-  Actor.initialize(self)
+function Player:initialize(options)
+  Actor.initialize(self, options)
   self.position = position or {x = 1, y = 1}
   self.dt_since_input = 0
   self.entity_type = 'Actor'
   self.inputs = {}
   self:setInputs(Player.input_alternatives['wasd'])
   self:setInputs(Player.input_alternatives['arrows'])
-  self.animation_data = animation
   self.passable = true
   self.inventory = { }
 end

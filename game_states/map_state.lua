@@ -36,7 +36,6 @@ end
 
 function MapState:update(dt)
   dt = 0.05
-  self.level.player:update(dt)
   self.level:update(dt)
   self.view:update()
 end
