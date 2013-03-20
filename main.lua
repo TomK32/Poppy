@@ -42,7 +42,7 @@ function love.load()
   else
     game:startMenu()
   end
-  --love.audio.play(game.sounds.music[1])
+  love.audio.play(game.sounds.music.track01)
   --love.graphics.setMode(love.graphics.getWidth(), love.graphics.getHeight(), game.graphics.fullscreen)
   --game:start()
 end

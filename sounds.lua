@@ -15,6 +15,11 @@ sounds.speech = {
 }
 
 sounds.music = {
+  track01 = love.audio.newSource("sounds/md gramm - place du marche.mp3")
 }
+
+for i, sound in pairs(sounds.music) do
+  sound:setLooping(true)
+end
 
 return sounds

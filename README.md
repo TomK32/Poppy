@@ -33,6 +33,8 @@ application cache files directory is default on your operating system.
 * Artwork by Anna Lazareva
 * Programming by Thomas R. Koll
 
+### Music
+* https://soundcloud.com/md-gramm/place-du-march-bernard-bigo by md-gramm, CC By 3.0
 
 ## License
 
