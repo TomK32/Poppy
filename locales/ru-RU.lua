@@ -1,15 +1,14 @@
 
-
 return {
   formats = {
   },
   translations = {
-    ['[N]ew game'] = '',
-    ['Fullscreen'] = '',
-    ['Windowed'] = '',
-    ['Volume'] = '',
-    ['You have lost :('] = '',
-    ['You have won!'] = '',
+    ['[N]ew game'] = 'Новая игра',
+    ['Fullscreen'] = 'Полный экран',
+    ['Windowed'] = 'Режим окна',
+    ['Volume'] = 'Звук',
+    ['You have lost :('] = 'Вы проиграли :(',
+    ['You have won!'] = 'Вы выиграли!',
     ["Some nerds killed your Father."] = "",
     ["Now it's time for you to get them hanged."] = "",
     ['Press [space] to return to the start menu'] = 'Drücke die Leertaste um nochmal zu spielen.',
@@ -17,6 +16,6 @@ return {
     ['Do you want to upgrade?'] = '',
     ['Yes'] = '',
     ['No'] = ''
-}
+  }
 }
 
