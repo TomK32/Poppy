@@ -13,6 +13,7 @@ function ScoreView:initialize()
 end
 
 function ScoreView:drawContent()
+  love.graphics.setFont(game.fonts.regular)
   love.graphics.setColor(255,255,255,50)
   love.graphics.rectangle('fill', 0, 0, self.display.width, self.display.height)
   love.graphics.setColor(255,50,0,255)

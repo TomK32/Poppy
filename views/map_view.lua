@@ -1,4 +1,5 @@
 require('views/score_view')
+require('views/log_view')
 
 MapView = class("MapView", View)
 MapView:include({
@@ -9,11 +10,12 @@ MapView:include({
 })
 
 function MapView:initialize(map)
+  View.initialize(self)
   self.map = map
   self.draw_cursor = false
   self.canvas = love.graphics.newCanvas(self.display.width, self.display.height)
   if self.map.level.background then
-    self.background_scaling = 
+    self.background_scaling =
       math.ceil(100 * math.min(
         (self.display.width / self.map.level.background:getWidth()),
         (self.display.height / self.map.level.background:getHeight())
@@ -23,7 +25,6 @@ end
 
 function MapView:drawContent()
   if self.canvas then
-    love.graphics.setColor(255,255,255,255)
     love.graphics.draw(self.canvas, 0, 0)
   end
 end
@@ -35,7 +36,7 @@ function MapView:update()
 
   if self.map.level.background then
     love.graphics.push()
-    love.graphics.setColor(255 ,255 , 235 , 255)
+    love.graphics.setColor(255, 255, 255, 255)
     love.graphics.scale(self.background_scaling, self.background_scaling)
     love.graphics.draw(self.map.level.background, 0, 0)
     love.graphics.pop()
