@@ -40,8 +40,8 @@ function MapGenerator:seedPosition(seed_x,seed_y, scale_x, scale_y, offset_x, of
   offset_x = offset_x or 0
   offset_y = offset_y or 0
   return {
-    x = math.abs(math.floor((SimplexNoise.Noise2D(seed_x*0.1, seed_x*0.1)) * self.map.width)),
-    y = math.abs(math.floor((SimplexNoise.Noise2D(seed_y*0.1, seed_y*0.1)) * self.map.height))
+    x = math.abs(math.floor((SimplexNoise.Noise2D(seed_x*0.1, seed_y+1*0.1) * self.map.width))),
+    y = math.abs(math.floor((SimplexNoise.Noise2D(seed_y+1*0.1, seed_y*0.1) * self.map.height)))
   }
 end
 
@@ -49,7 +49,10 @@ end
 -- x1, y1, x2, y2 to limit the area where to spawn
 function MapGenerator:newActor(actor, z, x, y)
   self:incrementSeed(2)
-  actor.position = self:seedPosition(self.seed, self.seed+1)
+  repeat
+    actor.position = self:seedPosition(self.seed, self.seed+1)
+  until self.map:getNode(actor.position)
+
   if x then actor.position.x = x end
   if y then actor.position.y = y end
   if z then actor.position.z = z end
