@@ -45,6 +45,9 @@ do
   unzip -q -d "$BUILD" "$A.zip"
   cat "$GAME" >> "$A/love.exe"
   mv "$A/love.exe" "$A/$NAME.exe"
+  rm "$A/changes.txt"
+  mv "$A/license.txt" "$A/love2d-license.txt"
+  cp "README.md" "$A/README.txt"
 
   mv "$A" "$BUILD/${FILENAME}_$arch"
   R_PWD=`pwd`
