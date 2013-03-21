@@ -7,7 +7,6 @@
 require 'lib/babel'
 require 'lib/middleclass'
 require 'game'
---require 'leaderboard'
 require 'views/view'
 require 'views/credits_view'
 require 'game_states/state'
@@ -38,7 +37,7 @@ function love.load()
     game:setMode(modes[1])
   end
 
-  --local version = require('check_of_updates')
+  local version = require('check_of_updates')
   if version and version.version and version.url then
     game:newVersion(version.version, version.url)
   else
