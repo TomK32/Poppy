@@ -10,7 +10,6 @@ MapView:include({
 
 function MapView:initialize(map)
   self.map = map
-  self:updateDisplay()
   self.draw_cursor = false
   self.canvas = love.graphics.newCanvas(self.display.width, self.display.height)
   if self.map.level.background then
@@ -20,19 +19,6 @@ function MapView:initialize(map)
         (self.display.height / self.map.level.background:getHeight())
       ))/100
   end
-end
-
-function MapView:updateDisplay()
-  self.display = {
-    x = 0,
-    y = 0,
-    width = math.min(self.map.width * self.scale.x, game.graphics.mode.width),
-    height = math.min(self.map.height * self.scale.y, game.graphics.mode.height)
-  }
-  self.display.tiles = {
-    x = math.floor(self.display.width / self.scale.x),
-    y = math.floor(self.display.height / self.scale.y)
-  }
 end
 
 function MapView:drawContent()
@@ -50,7 +36,7 @@ function MapView:update()
   if self.map.level.background then
     love.graphics.push()
     love.graphics.setColor(255 ,255 , 235 , 255)
-    --love.graphics.scale(self.background_scaling, self.background_scaling)
+    love.graphics.scale(self.background_scaling, self.background_scaling)
     love.graphics.draw(self.map.level.background, 0, 0)
     love.graphics.pop()
   end
