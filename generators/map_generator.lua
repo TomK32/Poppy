@@ -18,13 +18,15 @@ end
 
 -- fill a whole map
 function MapGenerator:randomize()
-  self.level.player = self:newActor(Player({animation_data = game.animations.poppy}), 21, math.floor(self.map.width / 2, 2)
-)
+  self.level.player = self:newActor(Player({animation_data = game.animations.poppy}), 21,
+        0.8, nil, 1.0, nil)
   self.level.player.level = self.level
-  local pos = self.level.player.position
-  self:newActor(Follower({target = self.level.player, 'Tina', animation_data = game.animations.tina}), 21, pos.x - 2)
-  self:newActor(Follower({target = self.level.player, 'Chris', animation_data = game.animations.chris}), 21, pos.x + 2)
-  self:newActor(Tourist({name = 'Tourist', animation_data = game.animations.tourist[1]}), 21)
+  self:newActor(Follower({target = self.level.player, 'Tina', animation_data = game.animations.tina}), 21,
+        0.4, nil, 0.6, nil)
+  self:newActor(Follower({target = self.level.player, 'Chris', animation_data = game.animations.chris}), 21,
+        0.4, nil, 0.6, nil)
+  self:newActor(Tourist({name = 'Tourist', animation_data = game.animations.tourist[1]}), 21,
+        0.8, nil, 1, nil)
   self:newDiary()
 end
 
@@ -32,37 +34,50 @@ function MapGenerator:update(dt)
   -- generate new entities
 end
 
--- int, int, 0..1, 0..1, int, int
-function MapGenerator:seedPosition(seed_x,seed_y, scale_x, scale_y, offset_x, offset_y)
+-- int, int, 0..1, 0..1, 0..1, 0...1
+function MapGenerator:seedPosition(seed_x, seed_y, x1, y1, x2, y2)
   self:incrementSeed(1)
-  scale_x = scale_x or 1
-  scale_y = scale_y or 1
-  offset_x = offset_x or 0
-  offset_y = offset_y or 0
-  return {
+  local pos = {
     x = math.abs(math.floor((SimplexNoise.Noise2D(seed_x*0.1, seed_y+1*0.1) * self.map.width))),
     y = math.abs(math.floor((SimplexNoise.Noise2D(seed_y+1*0.1, seed_y*0.1) * self.map.height)))
   }
+  if x2 and x2 < 1 then
+    pos.x = pos.x * x2
+  end
+  if y2 and y2 < 1 then
+    pos.y = pos.y * y2
+  end
+  if x1 and x1 > 0 then
+    pos.x = pos.x * (1 - x1)  + (x1 * self.map.width)
+  end
+  if y1 and y1 > 0 then
+    pos.y = pos.y * (1 - y1) + (y1 * self.map.height)
+  end
+  pos.x = math.floor(pos.x)
+  pos.y = math.floor(pos.y)
+  return pos
 end
 
 -- klass: Player, Actor etc
 -- x1, y1, x2, y2 to limit the area where to spawn
-function MapGenerator:newActor(actor, z, x, y)
+function MapGenerator:newActor(actor, z, x1, y1, x2, y2)
   self:incrementSeed(2)
-  repeat
-    actor.position = self:seedPosition(self.seed, self.seed+1)
-  until self.map:getNode(actor.position)
+  local tries = 0
 
-  if x then actor.position.x = x end
-  if y then actor.position.y = y end
-  if z then actor.position.z = z end
+  repeat
+    actor.position = self:seedPosition(self.seed, self.seed+1, x1, y1, x2, y2)
+    tries = tries + 1
+  until self.map:getNode(actor.position) or tries > 10
+
   actor.map = self.level.map
+
+  actor.position.z = z or 1
   self.map:addEntity(actor)
   return actor
 end
 
 function MapGenerator:newDiary()
-  local diary = Diary({position = self:seedPosition(self.seed, self.seed+1)})
+  local diary = Diary({position = self:seedPosition(self.seed, self.seed+1, 0, nil, 0.2, nil)})
   diary.position.z = 20
   self.map:addEntity(diary)
 end
