@@ -88,3 +88,8 @@ end
 function Actor:addVectors(a, b)
   return {x = a.x + b.x, y = a.y + b.y}
 end
+
+
+function Actor:randomStep()
+  return {x = math.floor(math.random() * 3)-1, y = math.floor(math.random() * 3)-1}
+end

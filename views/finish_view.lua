@@ -8,7 +8,7 @@ FinishView.backgrounds = {
 function FinishView:initialize(player, message)
   View:initialize(self)
   self.player = player
-  self.message = message or 'Finishishsafd'
+  self.message = message or 'Finish'
   self.background = self.backgrounds[math.random(#self.backgrounds)]
   self.x = self.display.width - #self.message * 20 - 220
   self.y = math.max(0, self.display.height - 130)
@@ -26,7 +26,7 @@ function FinishView:drawContent()
 end
 
 function FinishView:update()
-  self.gui.group.push({grow = "down", pos = {self.x + 200, self.y}})
+  self.gui.group.push({grow = "down", pos = {self.x + 40, self.y}})
 
   love.graphics.setColor(255,255,255,255)
   if self.gui.Button({text = _('Return to menu')}) then

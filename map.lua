@@ -59,11 +59,16 @@ function Map:belowPosition(position)
   return result
 end
 
-function Map:entitiesOfType(position, _type)
+function Map:entitiesOfType(_type)
   local result = {}
-  for i, entity in ipairs(self:belowPosition(position)) do
-    if entity._type == _type then
-      table.insert(result, entity)
+  local top_layer = self.layer_indexes[#self.layer_indexes]
+  for i=0, top_layer do
+    if self.layers[top_layer - i] then
+      for e, entity in ipairs(self.layers[top_layer - i]) do
+        if entity._type == _type then
+          table.insert(result, entity)
+        end
+      end
     end
   end
   return result
@@ -72,11 +77,12 @@ end
 -- compability for AStar
 function Map:getNode(position)
   local passable = true
+  local entities = self:belowPosition(position)
   if #entities > 0 then
     if self.level.map_passable and self.level.map_passable[position.x] and self.level.map_passable[position.x][position.y] == 0 then
       return nil
     end
-    for i, entity in ipairs(self:belowPosition(position)) do
+    for i, entity in ipairs(entities) do
       if entity.passable == false then
         return nil
       end
