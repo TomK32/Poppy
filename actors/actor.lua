@@ -19,6 +19,7 @@ function Actor:move(offset)
     end
     self.moving_position = { x = self.moving_position.x + offset.x, y = self.moving_position.y + offset.y }
     self.position = new_position
+    return true
   else
     -- there's an obstacle, check all entities if they accept a collision
     local entities = self.map:belowPosition(new_position)
@@ -27,6 +28,7 @@ function Actor:move(offset)
         entity:collision(self)
       end
     end
+    return false
   end
 end
 

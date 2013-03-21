@@ -1,8 +1,9 @@
 
 local sounds = {}
 
-sounds.animals = {
-  -- love.audio.newSource("sounds/123123.mp3", "static")
+sounds.fx = {
+  hurt1 = love.audio.newSource("sounds/hurt1.mp3", "static"),
+  pickup = love.audio.newSource("sounds/pickup.mp3", "static")
 }
 
 sounds.player = {

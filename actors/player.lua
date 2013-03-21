@@ -87,7 +87,9 @@ function Player:keydown(dt)
       end
     end
     if self.moved then
-      self:move(movement)
+      if not self:move(movement) then
+        love.audio.play(game.sounds.fx.hurt1)
+      end
     end
   end
   if dt_change then
