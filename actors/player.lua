@@ -116,8 +116,12 @@ end
 
 function Player:targetReached(what)
   if what == 'Diary' then
+    if game.current_state.log then
+      table.insert(game.current_state.log, 'Now bring the diary to a tourist')
+    end
     for i, entity in ipairs(self.level.map:entitiesOfType('Follower')) do
       entity.particles = self:createParticles(entity.particle_images.evil)
+      entity.speed = entity.speed / 2
     end
     for i, entity in ipairs(self.level.map:entitiesOfType('Tourist')) do
       entity.particles = self:createParticles(entity.particle_images.good)

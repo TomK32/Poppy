@@ -4,7 +4,7 @@ require 'views/finish_view'
 FinishScreen = class("FinishScreen", State)
 
 function FinishScreen:initialize(player, message)
-  self.view = FinishView(player)
+  self.view = FinishView(player, message)
   self.view.state = self
 end
 

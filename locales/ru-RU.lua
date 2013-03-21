@@ -15,6 +15,9 @@ return {
     ['There is a new version: '] = '',
     ['Do you want to upgrade?'] = '',
     ['Play again'] = '',
+    ['Fetch the diary that Chris has lost'] = "",
+    ["Don't let them put you on a leash"] = '',
+    ["Now bring the diary to a tourist"] = '',
     ['Yes'] = '',
     ['No'] = ''
   }

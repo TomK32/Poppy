@@ -15,6 +15,9 @@ return {
     ['There is a new version: '] = 'Es gibt eine neue Version des Spiels: ',
     ['Do you want to upgrade?'] = 'Willst du sie herunterladen?',
     ['Play again'] = 'Nochmal spielen',
+    ['Fetch the diary that Chris has lost'] = "Finde Chris' Tagebuch",
+    ["Don't let them put you on a leash"] = 'Lass dich nicht fangen',
+    ["Now bring the diary to a tourist"] = 'Jetzt bring es zu einem Touristen',
     ['Yes'] = 'Ja',
     ['No'] = 'Nein'
   }

@@ -9,3 +9,4 @@ function Diary:playerEntered(player)
   love.audio.play(game.sounds.fx.pickup)
   self.dead = true
 end
+

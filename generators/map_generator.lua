@@ -27,6 +27,10 @@ function MapGenerator:randomize()
         0.4, nil, 0.6, nil)
   self:newActor(Tourist({name = 'Tourist', animation_data = game.animations.tourist[1]}), 21,
         0.8, nil, 1, nil)
+  self:newActor(Tourist({name = 'Tourist', animation_data = game.animations.tourist[1]}), 21,
+        0.8, nil, 1, nil)
+  self:newActor(Tourist({name = 'Tourist', animation_data = game.animations.tourist[1]}), 21,
+        0.8, nil, 1, nil)
   self:newDiary()
 end
 
