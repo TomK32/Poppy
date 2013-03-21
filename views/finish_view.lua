@@ -29,7 +29,7 @@ function FinishView:update()
   self.gui.group.push({grow = "down", pos = {self.x + 40, self.y}})
 
   love.graphics.setColor(255,255,255,255)
-  if self.gui.Button({text = _('Return to menu')}) then
+  if self.gui.Button({text = _('Play again')}) then
     game:startMenu()
   end
 end

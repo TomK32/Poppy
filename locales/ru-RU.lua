@@ -7,13 +7,14 @@ return {
     ['Fullscreen'] = 'Полный экран',
     ['Windowed'] = 'Режим окна',
     ['Volume'] = 'Звук',
+    ['Finish'] = '',
     ['You have lost :('] = 'Вы проиграли :(',
     ['You have won!'] = 'Вы выиграли!',
     ["Some nerds killed your Father."] = "",
     ["Now it's time for you to get them hanged."] = "",
-    ['Press [space] to return to the start menu'] = 'Drücke die Leertaste um nochmal zu spielen.',
     ['There is a new version: '] = '',
     ['Do you want to upgrade?'] = '',
+    ['Play again'] = '',
     ['Yes'] = '',
     ['No'] = ''
   }
