@@ -46,6 +46,7 @@ function Map:belowPosition(position)
   -- only search layers under the position.z
   local result = {}
   local layer = position.z
+  if #self.layer_indexes == 0 then return {} end
   if not layer then layer = self.layer_indexes[#self.layer_indexes] end
   for i=1, layer do
     if self.layers[layer - i + 1] then
