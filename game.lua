@@ -1,10 +1,10 @@
 
 game = {
   title = 'Poppy',
-  debug = true,
+  debug = false,
   graphics = {
     mode = { height = love.graphics.getHeight(), width = love.graphics.getWidth() },
-    fullscreen = flase
+    fullscreen = true
   },
   fonts = {},
   renderer = require('renderers/default'),

@@ -10,12 +10,11 @@ StartMenuView.background_image = love.graphics.newImage('images/start_menu_backg
 StartMenuView.volume = { value = love.audio.getVolume(), min = 0.01, max = 1.0 }
 
 function StartMenuView:drawContent()
-  love.graphics.setFont(game.fonts.regular)
+  love.graphics.setFont(game.fonts.large)
 
   love.graphics.setColor(255 ,255 , 235 , 255)
   love.graphics.draw(self.background_image)
 
-  love.graphics.setFont(game.fonts.large)
   gui.core.draw()
   x = math.min(400, game.graphics.mode.width / 3)
   y = 80
@@ -34,6 +33,7 @@ function StartMenuView:drawContent()
 end
 
 function StartMenuView:update(dt)
+  love.graphics.setFont(game.fonts.large)
   local x = 100
   local y = 250
 
