@@ -77,12 +77,14 @@ end
 
 -- compability for AStar
 function Map:getNode(position)
-  local passable = true
-  local entities = self:belowPosition(position)
-  if #entities > 0 then
-    if self.level.map_passable and self.level.map_passable[position.x] and self.level.map_passable[position.x][position.y] == 0 then
+  if self.level.map_passable and self.level.map_passable[position.y+1] then
+    if self.level.map_passable[position.y+1][position.x+1] == 0 then
       return nil
     end
+  end
+
+  local entities = self:belowPosition(position)
+  if #entities > 0 then
     for i, entity in ipairs(entities) do
       if entity.passable == false then
         return nil

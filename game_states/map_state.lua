@@ -17,6 +17,8 @@ require 'actors/tourist'
 MapState = class("MapState", State)
 function MapState:initialize()
 self.level = Level(1, math.floor(math.random() * 100))
+  self.log = {}
+  self.log_view = LogView(self.log)
   self.view = MapView(self.level.map)
   game.renderer.map_view = self.view
   self.score_view = ScoreView()
@@ -29,6 +31,8 @@ function MapState:draw()
   self.view:draw()
 
   self.score_view:draw()
+
+  self.log_view:draw()
 
   love.graphics.print("FPS: "..love.timer.getFPS(), 10, 20)
   love.graphics.print("x: " .. self.level.player.position.x .. ', y: ' .. self.level.player.position.y, 10, 35)

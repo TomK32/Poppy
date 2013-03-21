@@ -19,7 +19,7 @@ function CreditsView:update(dt)
   self.gui.Label({size = {'tight', 1.5 * 6 * game.fonts.lineHeight},
     text = _("Poppy is a fan-game based on the movie Sightseers.\
 \
-Programming: Thomas R. Koll, http://ananasblau.com\
+Programming: Thomas R. Koll, http://twitter.com/ananasblau\
 Art: Anna Lazareva, http://twitter.com/Anna_Lazareva\
 Music:\
   * Place du Marché by md-gramm, soundcloud.com/md-gramm/place-du-march-bernard-bigo")})

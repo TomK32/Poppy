@@ -1,10 +1,10 @@
 
 game = {
-  title = 'Poppy (working title)',
-  debug = false,
+  title = 'Poppy',
+  debug = true,
   graphics = {
     mode = { height = love.graphics.getHeight(), width = love.graphics.getWidth() },
-    fullscreen = true
+    fullscreen = flase
   },
   fonts = {},
   renderer = require('renderers/default'),
@@ -22,7 +22,7 @@ function game:createFonts(offset)
     small = love.graphics.newFont(font_file, 16 + offset),
     regular = love.graphics.newFont(font_file, 20 + offset),
     large = love.graphics.newFont(font_file, 24 + offset),
-    very_large = love.graphics.newFont(font_file, 36 + offset)
+    very_large = love.graphics.newFont(font_file, 48 + offset)
   }
 end
 

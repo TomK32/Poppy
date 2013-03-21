@@ -29,7 +29,7 @@ function StartMenuView:drawContent()
   love.graphics.setFont(game.fonts.large)
   love.graphics.translate(x, math.min(500, game.graphics.mode.height * 0.8))
   love.graphics.print(_("Some nerds killed your Father."), 0, 0)
-  love.graphics.translate(0, game.fonts.lineHeight * 2)
+  love.graphics.translate(0, game.fonts.lineHeight)
   love.graphics.print(_("Now it's time for you to get them hanged."), 0, 0)
 end
 
