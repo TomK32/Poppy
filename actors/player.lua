@@ -112,6 +112,16 @@ function Player:addToInventory(item)
   table.insert(self.inventory, item)
 end
 
+function Player:targetReached(what)
+  if what == 'Diary' then
+    for i, entity in ipairs(self.level.map:entitiesOfType('Follower')) do
+      entity.particles = self:createParticles(entity.particle_images.evil)
+    end
+    for i, entity in ipairs(self.level.map:entitiesOfType('Tourist')) do
+      entity.particles = self:createParticles(entity.particle_images.good)
+    end
+  end
+end
 
 function Player:drawInventory()
   if #self.inventory > 0 then

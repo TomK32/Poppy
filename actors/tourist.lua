@@ -4,6 +4,11 @@
 
 Tourist = class("Tourist", Actor)
 
+Tourist.particle_images = {
+  good = love.graphics.newImage('images/particles/good.png')
+}
+
+
 function Tourist:initialize(options)
   Actor.initialize(self, options)
   self.dt_since_last_step = 0

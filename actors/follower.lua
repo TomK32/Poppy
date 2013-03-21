@@ -1,5 +1,6 @@
 
 Follower = class("Follower", Actor)
+Follower._type = 'Follower'
 
 -- singleton, run only once when the target has found the diary
 Follower.shouted_for_diary = false
@@ -29,12 +30,6 @@ function Follower:updateActor(dt)
     Follower.shouted_for_diary = true
     Follower.catch_target = true
     love.audio.play(game.sounds.speech.shout_for_diary)
-  end
-  if self.particles then
-    self.particles:update(dt)
-  elseif Follower.catch_target then
-    -- they hunt the player, let's give them evil particles
-    self:startEvilParticles()
   end
   self.dt_since_last_step = self.dt_since_last_step + dt
   if self.dt_since_last_step < 50 * dt then
@@ -80,15 +75,3 @@ function Follower:distanceToTarget(position)
   return self:distanceTo(position or self.target.position)
 end
 
-function Follower:startEvilParticles()
-  self.particles = love.graphics.newParticleSystem(Follower.particle_images.evil, 3)
-  self.particles:setEmissionRate          (20)
-  self.particles:setLifetime              (-1)
-  self.particles:setParticleLife          (1.5)
-  self.particles:setPosition              (game.tile_size.x / 2, game.tile_size.y / 2)
-  self.particles:setDirection             (math.pi * 1.5)
-  self.particles:setSpread                (1)
-  self.particles:setSpeed                 (0, 30)
-  self.particles:setGravity               (0)
-  self.particles:setRadialAcceleration    (10)
-end

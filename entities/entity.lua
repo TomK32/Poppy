@@ -77,3 +77,17 @@ function Entity:includesPoint(point)
   end
   return false
 end
+
+function Entity:createParticles(image)
+  local particles = love.graphics.newParticleSystem(image, 3)
+  particles:setEmissionRate          (20)
+  particles:setLifetime              (-1)
+  particles:setParticleLife          (1.5)
+  particles:setPosition              (game.tile_size.x / 2, game.tile_size.y / 2)
+  particles:setDirection             (math.pi * 1.5)
+  particles:setSpread                (1)
+  particles:setSpeed                 (0, 30)
+  particles:setGravity               (0)
+  particles:setRadialAcceleration    (10)
+  return particles
+end

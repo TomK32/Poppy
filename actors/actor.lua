@@ -64,6 +64,9 @@ function Actor:update(dt)
   if self.updateActor then
     self:updateActor(dt)
   end
+  if self.particles then
+    self.particles:update(dt)
+  end
   local old_position = { x = self.position.x, y = self.position.y }
   self.map:fitIntoMap(self.position)
   if old_position.x ~= self.position.x or old_position.y ~= self.position.y then
