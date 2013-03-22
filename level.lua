@@ -23,6 +23,7 @@ function Level:update(dt)
   self.dt = self.dt + dt
   for layer, entities in pairs(self.map.layers) do
     for i, entity in pairs(entities) do
+      if game.stopped then return end
       entity:update(dt)
       if entity.dead == true then
         table.remove(self.map.layers[layer], i)
@@ -31,6 +32,7 @@ function Level:update(dt)
   end
   for i, entity in ipairs(self.map:belowPosition(self.player.position)) do
     if entity.playerEntered then
+      if game.stopped then return end
       entity:playerEntered(self.player)
     end
   end

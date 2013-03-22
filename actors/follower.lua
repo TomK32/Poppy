@@ -56,7 +56,7 @@ function Follower:updateActor(dt)
     if path then
       self:move(self:nodeToDirection(path:getNodes()[1]))
       -- reached target?
-      if self:distanceToTarget() <= 1 then
+      if Follower.catch_target and self:distanceToTarget() <= 1 then
         game:caught(self.target)
       end
       if self.shouted_for_target <= 0 then

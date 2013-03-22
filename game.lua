@@ -47,6 +47,7 @@ function game:startMenu()
 end
 
 function game:start()
+  game.stopped = false
   love.mouse.setVisible(false)
   game.current_state = MapState(game.current_level)
 end
@@ -63,14 +64,17 @@ function game:nextLevel()
 end
 
 function game:killed(player)
+  game.stopped = true
   game.current_state = FinishScreen(player, _('You have lost :('))
 end
 
 function game:caught(player)
+  game.stopped = true
   game.current_state = FinishScreen(player, _('You have been caught :('))
 end
 
 function game:victory(player)
+  game.stopped = true
   game.current_state = FinishScreen(player, _('You have won!'))
 end
 

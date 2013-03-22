@@ -20,7 +20,7 @@ end
 -- fill a whole map
 function MapGenerator:randomize()
   self.level.player = self:newActor(Player({animation_data = game.animations.poppy}), 21,
-        0.8, nil, 1.0, nil)
+        0.7, nil, 1, nil)
   self.level.player.level = self.level
   self:newActor(Follower({target = self.level.player, 'Tina', animation_data = game.animations.tina}), 21,
         0.4, nil, 0.6, nil)
@@ -72,7 +72,8 @@ function MapGenerator:newActor(actor, z, x1, y1, x2, y2)
   repeat
     actor.position = self:seedPosition(self.seed, self.seed+1, x1, y1, x2, y2)
     tries = tries + 1
-  until self.map:getNode(actor.position) or tries > 10
+    self:incrementSeed(1)
+  until self.map:getNode(actor.position) or tries > 30
 
   actor.map = self.level.map
 
