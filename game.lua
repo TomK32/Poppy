@@ -3,8 +3,7 @@ game = {
   title = 'Poppy',
   debug = false,
   graphics = {
-    mode = { height = love.graphics.getHeight(), width = love.graphics.getWidth() },
-    fullscreen = true
+    mode = { height = love.graphics.getHeight(), width = love.graphics.getWidth() }
   },
   fonts = {},
   renderer = require('renderers/default'),
