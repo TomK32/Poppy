@@ -3,8 +3,9 @@ require 'views/view'
 gui = require 'lib/quickie'
 
 StartMenuView = class("MenuView", View)
-
 gui.core.style.color.normal.bg = {80,180,80}
+
+StartMenuView.title = love.graphics.newImage('images/title.png')
 StartMenuView.background_image = love.graphics.newImage('images/start_menu_background.png')
 
 StartMenuView.volume = { value = love.audio.getVolume(), min = 0.01, max = 1.0 }
@@ -20,10 +21,8 @@ function StartMenuView:drawContent()
   y = 80
 
   love.graphics.setFont(game.fonts.very_large)
-  love.graphics.setColor(255,205,55,200)
-  love.graphics.print(game.title, x, y)
-  love.graphics.setColor(255,250, 210, 255)
-  love.graphics.print(game.title, x-1, y-1)
+  love.graphics.setColor(255,255,255,255)
+  love.graphics.draw(self.title, x, y)
 
   love.graphics.setFont(game.fonts.large)
   love.graphics.translate(x, math.min(500, game.graphics.mode.height * 0.8))

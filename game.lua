@@ -79,6 +79,13 @@ function game.loadImage(image)
   return love.graphics.newImage(image)
 end
 
+function game:newVersionOrStart()
+  if version and version.version and version.url then
+    game:newVersion(version.version, version.url)
+  else
+    game:startMenu()
+  end
+end
 
 function game:newVersion(version, url)
   game.current_state = NewVersion(version, url)
