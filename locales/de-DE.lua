@@ -12,7 +12,7 @@ return {
     ['You have won!'] = 'Du hast gewonnen :)',
     ["Some nerds killed your Father."] = "Zwei Nerds haben deinen Vater erschlagen.",
     ["Now it's time for you to get them hanged."] = "Es wird Zeit die beiden kalt zu machen.",
-    ['There is a new version: '] = 'Es gibt eine neue Version des Spiels: ',
+    ['There is a new version: '] = 'Es gibt eine neue Version: ',
     ['Do you want to upgrade?'] = 'Willst du sie herunterladen?',
     ['Next level'] = 'zum nächsten Level',
     ['Play again'] = 'Nochmal spielen',
