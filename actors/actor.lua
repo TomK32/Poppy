@@ -52,6 +52,7 @@ function Actor:drawContent()
 end
 
 function Actor:update(dt)
+  Entity.update(self, dt)
   -- slowly change the moving_position towards 0 for a walk animation
   local m_x = self.moving_position.x
   local m_y = self.moving_position.y

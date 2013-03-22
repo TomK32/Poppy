@@ -18,7 +18,7 @@ function Follower:initialize(options)
   Actor.initialize(self, options)
   self.shouted_for_target = 5 * 0.05
   self.target_max_distance = 5
-  self.dt_since_last_step = 0.0
+  self.dt_since_last_step = -5.0
   self.speed = 50
 end
 

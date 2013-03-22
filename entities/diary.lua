@@ -16,6 +16,7 @@ function Diary:playerEntered(player)
 end
 
 function Diary:update(dt)
+  Entity.update(self, dt)
   self.dt_timer = (self.dt_timer + dt) % math.pi
   self.moving_position = { x = math.sin(self.dt_timer)/20, y = math.sin(2* self.dt_timer)/20 }
 end

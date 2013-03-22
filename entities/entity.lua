@@ -4,6 +4,9 @@ Entity.map = nil
 Entity._type = nil
 
 function Entity:initialize(options)
+  self.creation_timer = 2 + 2 * math.random()
+  self.creation_timer_start = self.creation_timer
+
   self.name = self.class.name
   self.moving_position = { x = 0, y = 0} -- for the walking animation
   if options then
@@ -28,7 +31,12 @@ end
 
 function Entity:draw()
   love.graphics.push()
-  love.graphics.setColor(255,255,255,255)
+  local options = 255
+  if self.creation_timer > 0 then
+    opacity = math.floor(math.max(0, 255 - 255 * self.creation_timer / self.creation_timer_start))
+    self.moving_position = { x = 0, y = (self.creation_timer / self.creation_timer_start) / 2}
+  end
+  love.graphics.setColor(255,255,255,opacity)
   game.renderer:translate(self.position.x, self.position.y)
   if self.moving_position then
     game.renderer:translate(-self.moving_position.x, -self.moving_position.y)
@@ -44,6 +52,9 @@ function Entity:drawContent()
 end
 
 function Entity:update(dt)
+  if self.creation_timer > 0 then
+    self.creation_timer = self.creation_timer - dt
+  end
   if self:animation() then
     self:animation():update(dt)
   end
