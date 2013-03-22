@@ -51,11 +51,11 @@ do
 
   mv "$A" "$BUILD/${FILENAME}_$arch"
   R_PWD=`pwd`
-  cd "$BUILD/${FILENAME}_$arch"
+  cd "$BUILD/"
 
   echo "$BUILD/${FILENAME}_$arch.zip"
   if [ -f "$BUILD/${FILENAME}_$arch.zip" ]; then rm "$BUILD/${FILENAME}_$arch.zip"; fi
-  zip -q -r "$BUILD/${FILENAME}_$arch.zip" .
+  zip -q -r "$BUILD/${FILENAME}_$arch.zip" "$BUILD/${FILENAME}_$arch"
   rm -R "$BUILD/${FILENAME}_$arch"
   cd "$R_PWD"
 done

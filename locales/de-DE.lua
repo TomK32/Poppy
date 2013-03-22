@@ -19,6 +19,7 @@ return {
     ['Fetch the diary that Chris has lost'] = "Finde Chris' Tagebuch",
     ["Don't let them put you on a leash"] = 'Lass dich nicht fangen',
     ["Now bring the diary to a tourist"] = 'Jetzt bring es zu einem Touristen',
+    ["PS: Want to make a level? Send a mail to info@ananasblau.com"] = "PS: Willst du ein Level machen? Schick eine E-Mail an info@ananasblau.com",
     ['Yes'] = 'Ja',
     ['No'] = 'Nein'
   }
