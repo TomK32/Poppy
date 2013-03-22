@@ -14,6 +14,7 @@ function Intro:update(dt)
   if self.timer < 0 then
     self.callback()
   end
+  self.view:update(dt)
 end
 
 function Intro:keypressed(key, unicode)

@@ -9,8 +9,12 @@ IntroView.position = {x = love.graphics.getWidth() / 2,
 
 function IntroView:drawContent()
   love.graphics.setFont(game.fonts.regular)
-  love.graphics.setColor(255,255,255,255)
+  love.graphics.setColor(255,255,255, 255 * math.min(1, (self.dt_timer/3)))
   love.graphics.draw(self.intro, self.position.x, self.position.y)
 end
 
+function IntroView:update(dt)
+  if not self.dt_timer then self.dt_timer = 0 end
+  self.dt_timer = self.dt_timer + dt
+end
 
