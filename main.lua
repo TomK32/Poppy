@@ -60,7 +60,11 @@ function love.keypressed(key)
   if not game.current_state then return end
   game.current_state:keypressed(key)
 end
-
+function love.mousepressed(x,y,button)
+  if game.current_state.mousepressed then
+    game.current_state:mousepressed(x,y,button)
+  end
+end
 function love.update(dt)
   if not game.current_state then return end
   game.current_state:update(dt)
