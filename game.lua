@@ -12,7 +12,12 @@ game = {
   animations = require('animations'),
   tile_size = {x = 48, y = 48},
   version = require('version'),
-  url = 'http://ananasblau.com/poppy'
+  url = 'http://ananasblau.com/poppy',
+  levels = {
+    require('levels/stone_circle'),
+    require('levels/tram_town')
+  },
+  current_level = 1
 }
 
 function game:createFonts(offset)
@@ -44,7 +49,18 @@ end
 
 function game:start()
   love.mouse.setVisible(false)
-  game.current_state = MapState()
+  game.current_state = MapState(game.current_level)
+end
+
+function game:hasNextLevel()
+  return self.current_level < #self.levels
+end
+
+function game:nextLevel()
+  if self:hasNextLevel() then
+    self.current_level = self.current_level + 1
+  end
+  game:start()
 end
 
 function game:killed(player)

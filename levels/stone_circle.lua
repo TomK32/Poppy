@@ -1,7 +1,7 @@
 
 local stone_circle = {}
 
-stone_circle.background = game.loadImage('images/levels/stone_circle/background.png')
+stone_circle.background = love.graphics.newImage('images/levels/stone_circle/background.png')
 
 stone_circle.map_passable = {
   { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

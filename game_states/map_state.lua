@@ -15,8 +15,8 @@ require 'actors/follower'
 require 'actors/tourist'
 
 MapState = class("MapState", State)
-function MapState:initialize()
-self.level = Level(1, math.floor(math.random() * 100))
+function MapState:initialize(level)
+  self.level = Level(level, math.floor(math.random() * 100))
   self.log = {_('Fetch the diary that Chris has lost')}
   self.log_view = LogView(self.log)
   self.view = MapView(self.level.map)

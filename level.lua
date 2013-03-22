@@ -1,14 +1,10 @@
 Level = class("Level")
 
-Level.levels = {
-  require('levels/stone_circle')
-}
-
 function Level:initialize(level, seed)
 
   -- merge the level's values into this
-  assert(Level.levels[level], 'Level ' .. level .. ' is missing')
-  for k,v in pairs(Level.levels[level]) do
+  assert(game.levels[level], 'Level ' .. level .. ' is missing')
+  for k,v in pairs(game.levels[level]) do
     self[k] = v
   end
 
