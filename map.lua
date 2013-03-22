@@ -26,10 +26,8 @@ function Map:addEntity(entity)
 end
 
 function Map:fitIntoMap(position)
-  -- The map is wrapped on the x-axis, meaning if something leaves on one side it
-  -- reappears on the opposing side
   if position.x < 0 then
-    position.x = self.width
+    position.x = 0
   elseif position.x + 1 >= self.width then
     position.x = self.width - 1
   end

@@ -10,6 +10,7 @@ return {
     ['Finish'] = 'Ende',
     ['You have lost :('] = 'Du hast verloren :(',
     ['You have won!'] = 'Du hast gewonnen :)',
+    ["You've been caught :("] = "Du wurdest eingefangen :(",
     ["Some nerds killed your Father."] = "Zwei Nerds haben deinen Vater erschlagen.",
     ["Now it's time for you to get them hanged."] = "Es wird Zeit die beiden kalt zu machen.",
     ['There is a new version: '] = 'Es gibt eine neue Version: ',

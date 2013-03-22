@@ -15,6 +15,7 @@ diary where he's written down all his crimes.
 
 Bring it to a helpful person, maybe a copper or a German tourist, before Chris or Tina catch you or they kill someone.
 
+   I wish you'd make something fun next time -- Lemtzas
 
 ## Controls
 
@@ -25,6 +26,7 @@ Hit the spacebar for various actions like barking.
 Pressing F2 will make a screenshot which will stored in whatever
 application cache files directory is default on your operating system.
 
+    What is the point? @_@ -- asmageddon
 
 ## Credits
 

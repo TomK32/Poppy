@@ -7,6 +7,7 @@ function MapGenerator:initialize(seed)
   self.map = nil
   self.level = nil
   self.seed = seed
+  print('Seed: ' .. seed)
   self:incrementSeed(0)
   self.dt = {  } -- various timers
 end
