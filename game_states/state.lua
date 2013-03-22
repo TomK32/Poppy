@@ -19,7 +19,7 @@ function State:draw()
   end
 end
 
-function State:keypressed(key)
+function State:keypressed(key, code)
   if self.view.gui then
     self.view.gui.keyboard.pressed(key, code)
   end

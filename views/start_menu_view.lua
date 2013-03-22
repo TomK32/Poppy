@@ -30,6 +30,11 @@ function StartMenuView:drawContent()
   love.graphics.print(_("Some nerds killed your Father."), 0, 0)
   love.graphics.translate(0, game.fonts.lineHeight)
   love.graphics.print(_("Now it's time for you to get them hanged."), 0, 0)
+
+  love.graphics.translate(0, 3* game.fonts.lineHeight)
+  love.graphics.setFont(game.fonts.small)
+  love.graphics.print(_("PS: Want to make a level? Send a mail to info@ananasblau.com"), 0, 0)
+
 end
 
 function StartMenuView:update(dt)

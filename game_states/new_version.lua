@@ -10,12 +10,6 @@ function NewVersion:initialize(version, url)
   self.view.state = self
 end
 
-function NewVersion:keypressed(key)
-  if key == 'enter' then
-    self:openURL()
-  end
-end
-
 function NewVersion:openUrl()
   if love._os == 'OS X' then
     os.execute('open ' .. self.url)
